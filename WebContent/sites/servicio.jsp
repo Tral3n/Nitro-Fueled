@@ -79,7 +79,7 @@ for(Servicio s: ListaServ) {
 	
 	
 
- %>>               
+ %>              
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -99,6 +99,8 @@ for(Servicio s: ListaServ) {
                     <% }%>
                 </tbody>
             </table>
+            
+            
 		<!-- 	<div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
@@ -116,6 +118,14 @@ for(Servicio s: ListaServ) {
 	
 
 	</div>
-
+<div class="col-md-2	">
+				<a class="text-decoration-none" href="../sites/menu.jsp">
+					<button class="btn btn-success">
+						<div class=" p-1  ">
+							
+						</div>
+						<div class=" text-center mt-1">
+							Volver
+						</div>
 </body>
 </html>                                		                            

@@ -1,6 +1,8 @@
 package model;
 
 import include.Servicio;
+import include.User;
+
 import java.sql.*;
 import java.util.ArrayList;
 public class ModeloServicio  extends Conexion {
@@ -65,9 +67,14 @@ System.out.println(e.getMessage());
 	ModeloServicio ms = new ModeloServicio();
 //		System.out.println(ms.GetServicio(1));
 		 ArrayList <Servicio> ListaServ = ms.GetListaServ() ;
-		 
+
+		
 		 for (Servicio servicio : ListaServ) {
 			System.out.println(servicio);
+			
+				
+			}
 		}
 	}
-}
+	
+
