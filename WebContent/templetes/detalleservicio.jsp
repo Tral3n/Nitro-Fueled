@@ -6,7 +6,9 @@
 
 ModeloServicio ms = new ModeloServicio();
 //System.out.println(ms.GetServicio(1));
- ArrayList <Servicio> ListaServ = ms.GetListaServ() ;
+
+ int id = Integer.parseInt(request.getParameter("id"));
+ ArrayList <Precio> ListaServ = ms.GetDetalServ(id) ;
  ms.cerrarConexion();
 
 %>
@@ -15,7 +17,7 @@ ModeloServicio ms = new ModeloServicio();
 <html lang="en">
 <head>
  <jsp:include page="../templetes/head.jsp"></jsp:include>
-<title>Servicios</title>
+<title> Detalle Servicios</title>
 
 </head>
 
@@ -38,8 +40,8 @@ ModeloServicio ms = new ModeloServicio();
     
  
       <th scope="col">Codigo</th>
-      <th scope="col">Servicio</th>
-      <th scope="col">Ver</th>
+      <th scope="col">Tipo de auto</th>
+      <th scope="col">Precio</th>
     </tr>
  
  
@@ -48,21 +50,22 @@ ModeloServicio ms = new ModeloServicio();
      
   <tbody>
        <%  
-for(Servicio s: ListaServ) {
+       for(Precio s: ListaServ) {
 
- %>              
-     
-    <tr>
-     	
-      <td><%= s.getID()  %></td>
-      <td><%= s.getNOMBRE()  %></td>
-         <td> <a href="../templetes/detalleservicio.jsp?id=<%=s.getID()  %>" class="h6"> <span class="fa  fa-eye" aria-hidden="true"></span> </a> </td>
-    
-    </tr>
-    
-           	 <%  	
-}	
- %> 
+    	   %>              
+    	       
+    	      <tr>
+    	       	
+    	        <td><%= s.getID()  %></td>
+    	        <td><%= s.getTIPOAUTO()  %></td>
+    	             <td><%= s.getPRECIO()  %></td>
+    	           
+    	      
+    	      </tr>
+    	      
+    	             	 <%  	
+    	  }	
+    	   %> 
   </tbody>
  
 </table>
@@ -71,7 +74,7 @@ for(Servicio s: ListaServ) {
 	</div>
 <div class="col-md-2	">
 
-				<a class="text-decoration-none" href="../sites/menu.jsp">
+				<a class="text-decoration-none" href="../sites/servicio.jsp">
 					<button class="btn btn-success">
 						<div class=" p-1  ">
 							

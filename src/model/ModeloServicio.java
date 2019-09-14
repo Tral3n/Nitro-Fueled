@@ -1,5 +1,6 @@
 package model;
 
+import include.Precio;
 import include.Servicio;
 import include.User;
 
@@ -63,14 +64,52 @@ System.out.println(e.getMessage());
 		return servicio;
 		
 	}
+	
+	public ArrayList <Precio> GetDetalServ (int ID) {
+		
+		 ArrayList <Precio> ListaServ = new ArrayList <>() ;
+		 PreparedStatement objSta = null;
+	        ResultSet tabla = null;
+	        
+	        try {
+				String SQL = "SELECT pre.ID , tipo.TIPOAUTO , pre.PRECIO\r\n" + 
+						"FROM precio as pre\r\n" + 
+						"INNER JOIN servicio as serv\r\n" + 
+						"ON pre.ID_SERVICIO = serv.ID\r\n" + 
+						"INNER JOIN tipoauto as tipo\r\n" + 
+						"ON pre.ID_TIPOAUTO = tipo.ID\r\n" + 
+						"\r\n" + 
+						"WHERE pre.ID_SERVICIO = ?";
+				objSta = getConnection().prepareStatement(SQL);
+				objSta.setInt(1, ID);
+				
+						
+				tabla = objSta.executeQuery();
+				
+				while (tabla.next()) {
+					int IDd = tabla.getInt("ID");
+					int PRECIO = tabla.getInt("PRECIO");
+					String TIPOAUTO = tabla.getString("TIPOAUTO");
+				ListaServ.add( new Precio (IDd,PRECIO,TIPOAUTO));
+				}
+				
+				objSta.close();
+			} catch (Exception e) {
+	e.printStackTrace();
+	System.out.println(e.getMessage());
+			}
+		 return ListaServ;
+	}
+	
+	
 	public static void main(String[] args ) {
 	ModeloServicio ms = new ModeloServicio();
 //		System.out.println(ms.GetServicio(1));
-		 ArrayList <Servicio> ListaServ = ms.GetListaServ() ;
+		 ArrayList <Precio> ListaServ = ms.GetDetalServ(1) ;
 
 		
-		 for (Servicio servicio : ListaServ) {
-			System.out.println(servicio);
+		 for (Precio precio : ListaServ) {
+			System.out.println(precio);
 			
 				
 			}
