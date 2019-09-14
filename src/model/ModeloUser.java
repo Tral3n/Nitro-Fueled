@@ -45,9 +45,4 @@ public class ModeloUser extends Conexion {
     return flag;
     }
 
-    public static void main(String[] args ) {
-    	ModeloUser ms = new ModeloUser();
-    	System.out.println(ms.validar(new User("admin", "123")));
-    		}
-
 }

@@ -10,11 +10,12 @@
 					<strong>Login</strong>
 				</div>
 				<div class="card-body">
-					<form name="login" id="login">
 						<div class="row">
+					<form name="login" id="login">
 							<div class="col">
+						
 								<span class="profile-img">
-								<center>	<i class='fas fa-user-circle' style='font-size:120px'> </i></center>
+									<i class='fas fa-user-circle' style='font-size:120px'> </i>
 								</span>
 							</div>
 						</div>
@@ -32,7 +33,7 @@
 												<i class='fas fa-user-shield'></i>
 											</span>
 										</div>
-										<input class="form-control" placeholder="Usuario" id="loginEmail" name="loginEmail" type="email" autofocus>
+										<input class="form-control" placeholder="Usuario" id="User" name="User"  autofocus>
 									</div>
 								</div>
 								<div class="form-group">
@@ -42,11 +43,12 @@
 												<i class='fas fa-user-secret'></i>
 											</span>
 										</div>
-										<input class="form-control" placeholder="Contraseña" id="loginPassword" name="loginPassword" type="password">
+										<input class="form-control" placeholder="Contraseña" id="Contrasena" name="Contrasena" type="password" title="Ingrese la contraseña">
 									</div>
 								</div>
+<div id="alerta"></div>								
 								<div class="form-group">
-								<a href= "sites/menu.jsp" > 	<input type="button" class="btn btn-lg btn-success btn-block submit" id="login_m"  value="Ingresar" ></a>
+								 	<input type="button" class="btn btn-lg btn-success btn-block submit" id="login_m"  value="Ingresar" >
 									
 								</div>
 							</div>
