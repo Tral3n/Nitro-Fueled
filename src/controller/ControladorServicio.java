@@ -8,37 +8,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import include.User;
-import model.ModeloUser;
+import model.ModeloServicio;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class ControladorServicio
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/Login" })
-public class Login extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/ControladorServicio" })
+public class ControladorServicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ModeloUser ms = new ModeloUser();
-    
-    		String User =request.getParameter("User") ;
-    		String Contrasena =request.getParameter("Contrasena");
-    		
-    		
-    		
-    		boolean loQueAmiMeEntra  = ms.validar(new User(User, Contrasena)); 
-    		
-    	
+		
+		ModeloServicio mse = new ModeloServicio();
+		
+		int Precio_nuevo =Integer.parseInt(request.getParameter("Precio_nuevo"));
+		int ID =Integer.parseInt(request.getParameter("ID_Precio"));
+	
+		
 
-
-	response.getWriter().print(loQueAmiMeEntra);
+		
+		boolean loQueAmiMeEntra  = mse.updatePrecioDetalleServ(ID , Precio_nuevo);
+		
+		mse.cerrarConexion();
+		
+		response.getWriter().print(loQueAmiMeEntra);
+		
+		
+		
+		
+				
+		
+		
+		
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		doGet(request, response);
 	}
 

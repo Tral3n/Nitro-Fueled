@@ -63,7 +63,7 @@
 				<a class="text-decoration-none" href="liquidar.jsp">
 					<button class="btn btn-outline-warning btn-block">
 						<div class=" p-3 h1 ">
-							<span class="fa  fa-eye" aria-hidden="true"></span>
+							<span class="fa  fa-file-signature" aria-hidden="true"></span>
 						</div>
 						<div class=" text-center mt-3">
 							<h4>Reportes</h4>

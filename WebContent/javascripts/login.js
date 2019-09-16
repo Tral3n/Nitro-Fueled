@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
 	
+	
+	//Funcion para el error de logian cuando los datos son incorrectos
+	
+	
 	$("#login_m").click(function() {
 		
 

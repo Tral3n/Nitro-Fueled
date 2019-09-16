@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class ModeloServicio  extends Conexion {
  
 	
+	
+	// El creacion de la lista
 	public ArrayList <Servicio> GetListaServ (){
 		 ArrayList <Servicio> ListaServ = new ArrayList <>() ;
 		 PreparedStatement objSta = null;
@@ -37,6 +39,8 @@ public class ModeloServicio  extends Conexion {
 		 
 	}
 	
+	
+	//obtecion de los servicios (select)
 	public Servicio GetServicio ( int ID) {
 		Servicio servicio = null;
 		PreparedStatement objSta = null;
@@ -65,6 +69,8 @@ System.out.println(e.getMessage());
 		
 	}
 	
+	
+	//obtecion de los detallesservicios (select)
 	public ArrayList <Precio> GetDetalServ (int ID) {
 		
 		 ArrayList <Precio> ListaServ = new ArrayList <>() ;
@@ -102,18 +108,55 @@ System.out.println(e.getMessage());
 	}
 	
 	
+	 public boolean updatePrecioDetalleServ ( int ID ,int PrecioN ) {
+
+		    boolean flag = false;
+
+		    PreparedStatement objSta = null;
+		
+
+		    try {
+
+		        String sql = "UPDATE precio SET PRECIO= ? WHERE ID = ?  ";
+		        objSta = getConnection().prepareStatement(sql);
+		       
+		        objSta.setInt(1, PrecioN);
+		        objSta.setInt(2, ID);
+		
+
+
+
+		 
+
+      flag = objSta.executeUpdate()==1;
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        try {
+		            if (objSta != null) {
+		                objSta.close();
+		            }
+		        } catch (Exception e) {
+		             e.printStackTrace();
+		        }
+		    }
+
+		    return flag;
+		    }
+	
 	public static void main(String[] args ) {
 	ModeloServicio ms = new ModeloServicio();
 //		System.out.println(ms.GetServicio(1));
-		 ArrayList <Precio> ListaServ = ms.GetDetalServ(1) ;
+
+	
+
 
 		
-		 for (Precio precio : ListaServ) {
-			System.out.println(precio);
-			
-				
-			}
-		}
-	}
+		
 	
+
+	
+	}
+}
 
