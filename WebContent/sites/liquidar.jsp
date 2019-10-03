@@ -4,11 +4,56 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+ <jsp:include page="../templetes/head.jsp"></jsp:include>
+  <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+<title>Liquidacion</title>
 </head>
 <body>
-<h1>estas en liquidar pibe</h1>
 
-<a href ="../sites/menu.jsp">te queres devolver?</a>
+
+
+
+<div class="jumbotron">
+		<div class="row justify-content-center -w100" >
+			<div class="col-md-3">
+				<a class="text-decoration-none" href="turnos.jsp">
+					<button class="btn btn-outline-primary btn-block">
+						<div class=" p-3 h1 ">
+							<span class="fa  fa-ticket-alt" aria-hidden="true"></span>
+						</div>
+						<div class=" text-center mt-3">
+							<h4>Turnos</h4>
+						</div>
+						<div class=" text-center mt-2">
+							<h1>9332</h1>
+						</div>
+					</button>
+				</a>
+			</div>
+			<div class="col-md-3">
+				<a class="text-decoration-none" href="liquidarTurno.jsp">
+					<button class="btn btn-outline-success btn-block">
+						<div class=" p-3 h1 ">
+							<span class="fa  fa-calculator" aria-hidden="true"></span>
+						</div>
+						<div class=" text-center mt-3">
+							<h4>Liquidar</h4>
+						</div>
+						<div class=" text-center mt-2">
+							<h1>9332</h1>
+						</div>
+					</button>
+				</a>
+			</div>
+			
+			</div>
+			
+			</div>
+			
+	<jsp:include page="../templetes/btnVolver.jsp"></jsp:include>
+
+
+
 </body>
 </html>

@@ -4,10 +4,10 @@
 
 <%
 
-ModeloServicio ms = new ModeloServicio();
+ModeloCliente c = new ModeloCliente();
 //System.out.println(ms.GetServicio(1));
- ArrayList <Servicio> ListaServ = ms.GetListaServ() ;
- ms.cerrarConexion();
+ ArrayList <Cliente> ListaClient = c.GetListaClient() ;
+ c.cerrarConexion();
 
 %>
 
@@ -16,7 +16,7 @@ ModeloServicio ms = new ModeloServicio();
 <head>
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
-<title>Servicios</title>
+<title>Clientes</title>
 
 </head>
 
@@ -24,25 +24,26 @@ ModeloServicio ms = new ModeloServicio();
 <body>
 
 
-<br>
+`
 
-<center><h3>Servicios</h3></center>
+
 
 <div class = "container">
 
-
-
-<div class = "row justify-content-center -w100">
-<div class = "col-md-12">
-<table class="table">
-  <thead class="bg-danger">
+<center><h3>Clientes</h3></center>
+<div class = "row">
+<table class="table mt-4" >
+  <thead class="bg-danger" >
 
     <tr>
     
  
       <th scope="col">Codigo</th>
-      <th scope="col">Servicio</th>
-      <th scope="col">Ver</th>
+      <th scope="col">Cedula</th>
+      <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+          <th scope="col">Tipo-Auto</th>
+           <th scope="col">Placa</th>
     </tr>
  
  
@@ -51,15 +52,19 @@ ModeloServicio ms = new ModeloServicio();
      
   <tbody>
        <%  
-for(Servicio s: ListaServ) {
+       for(Cliente s: ListaClient) {
 
  %>              
      
     <tr>
      	
       <td><%= s.getID()  %></td>
-      <td><%= s.getNOMBRE()  %></td>
-         <td> <a href="../templetes/detalleservicio.jsp?id=<%=s.getID()  %>" class="h6"> <span class="fa  fa-eye" aria-hidden="true"></span> </a> </td>
+      <td><%= s.getCC() %></td>
+       <td><%= s.getNOMBRES() %></td>
+        <td><%= s.getAPELLIDOS() %></td>
+         <td><%= s.getID_TIPOAUTO() %></td>
+          <td><%= s.getPLACA() %></td>
+      
     
     </tr>
     
@@ -71,7 +76,6 @@ for(Servicio s: ListaServ) {
 </table>
 
 
-	</div>
 	</div>
  <jsp:include page="../templetes/btnVolver.jsp"></jsp:include>
 </div> 

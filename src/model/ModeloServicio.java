@@ -2,7 +2,7 @@ package model;
 
 import include.Precio;
 import include.Servicio;
-import include.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class ModeloServicio  extends Conexion {
 		 ArrayList <Servicio> ListaServ = new ArrayList <>() ;
 		 PreparedStatement objSta = null;
 	        ResultSet tabla = null;
-	        
+	        	
 	        try {
 				String SQL = "SELECT * FROM servicio ";
 				objSta = getConnection().prepareStatement(SQL);

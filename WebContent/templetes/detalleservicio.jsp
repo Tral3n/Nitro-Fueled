@@ -101,6 +101,8 @@
 												</div>
 
 											</div>
+											
+											
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary"
 													data-dismiss="modal">Cancelar</button>
@@ -130,9 +132,12 @@
 
 			<a class="text-decoration-none" href="../sites/servicio.jsp">
 				<button class="btn btn-success">
-					<div class=" p-1  "></div>
-					<div class=" text-center mt-1">Volver</div>
+					
+					<div class=" text-center">Volver</div>
+					</button>
+					</a>
 		</div>
+		
 	</div>
 
 

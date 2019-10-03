@@ -4,12 +4,14 @@
 <html>
 <head>
  <jsp:include page="../templetes/head.jsp"></jsp:include>
+ 
+ <jsp:include page="../templetes/topbar.jsp"></jsp:include>
 <title>Menu</title>
 
 </head>
 
-<body>
-<jsp:include page="../templetes/topbar.jsp"></jsp:include>
+<body 	>
+
 
 <!--menus -->
 	<div class="jumbotron">
@@ -30,7 +32,7 @@
 				</a>
 			</div>
 			<div class="col-md-3">
-				<a class="text-decoration-none" href="liquidar.jsp">
+				<a class="text-decoration-none" href="clientes.jsp">
 					<button class="btn btn-outline-success btn-block">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-car" aria-hidden="true"></span>
@@ -60,7 +62,7 @@
 				</a>
 			</div>
 			<div class="col-md-3">
-				<a class="text-decoration-none" href="liquidar.jsp">
+				<a class="text-decoration-none" href="reportes.jsp">
 					<button class="btn btn-outline-warning btn-block">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-file-signature" aria-hidden="true"></span>
@@ -79,13 +81,13 @@
 
 		<div class="row w-100">
 			<div class="col-md-3">
-				<a class="text-decoration-none" href="liquidar.jsp">
+				<a class="text-decoration-none" href="configuracion.jsp">
 					<button class="btn btn-outline-warning btn-block">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-gear" aria-hidden="true"></span>
 						</div>
 						<div class=" text-center mt-3">
-							<h4>Configurar</h4>
+							<h4>Configución</h4>
 						</div>
 						<div class=" text-center mt-2">
 							<h1>9332</h1>
@@ -93,6 +95,8 @@
 					</button>
 				</a>
 			</div>
+		</div>
+		
 		</div>
 </body>
 </html>
