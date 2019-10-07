@@ -23,7 +23,7 @@
 <body>
 
 	<div class="jumbotron">
-<center><h3>Creacion de turno</h3></center>	
+<center><h3>Parametros</h3></center>	
 
 		<div class="row">
 

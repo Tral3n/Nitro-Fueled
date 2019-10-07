@@ -35,7 +35,7 @@ ModeloServicio ms = new ModeloServicio();
 <div class = "row justify-content-center -w100">
 <div class = "col-md-12">
 <table class="table">
-  <thead class="bg-danger">
+ <thead class="thead-dark">
 
     <tr>
     
@@ -73,7 +73,24 @@ for(Servicio s: ListaServ) {
 
 	</div>
 	</div>
- <jsp:include page="../templetes/btnVolver.jsp"></jsp:include>
+
+			<div class="col-md-2 	">
+
+				<a class="text-decoration-none" href="../sites/menu.jsp">
+					<button class="btn btn-success">
+						
+						<div class=" text-center ">
+							Volver
+							
+							
+						</div>
+						
+						</button>
+						</a>
+						
+						
+						
+</div>
 </div> 
 
         

@@ -33,7 +33,7 @@ ModeloCliente c = new ModeloCliente();
 <center><h3>Clientes</h3></center>
 <div class = "row">
 <table class="table mt-4" >
-  <thead class="bg-danger" >
+  <thead class="thead-dark">
 
     <tr>
     

@@ -220,7 +220,7 @@ a{text-decoration:none !important;}
 		font-weight: normal;
 	}
     .jumbotron{
-  
+  margin: 3px;
     }
     
     .nav-tabs {

@@ -10,7 +10,36 @@
 <title>Turnos</title>
 </head>
 <body>
+
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+     
+    </div>
+    <div class="col-md-auto">
+      
+    </div>
+    <div class="col col-lg-2">
+     
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    
+    </div>
+    <div class="col-md-auto">
+     
+    </div>
+    <div class="col col-lg-2">
+    <input type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="Turno #1">
+    </div>
+  </div>
+</div>
 <div class="jumbotron">
+
+
+ 
 <form>
 <center><h3>Creacion de turno</h3></center>
 
@@ -35,6 +64,10 @@
       <label for="formGroupExampleInput2">Hora de entrada</label>
    <input type="time" id="picker" class="form-control " >
  
+ 
+ 
+     
+
   
 </form>
 

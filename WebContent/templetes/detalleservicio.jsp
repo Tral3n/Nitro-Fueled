@@ -30,13 +30,16 @@
 	<jsp:include page="../templetes/topbar.jsp"></jsp:include>
 
 
+<br>
+<br>
 
 	<div class="container">
 
 
 		<div class="row">
 			<table class="table">
-				<thead class="bg-danger">
+				<thead class="thead-dark">
+
 
 					<tr>
 
