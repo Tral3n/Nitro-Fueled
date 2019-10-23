@@ -18,7 +18,7 @@
 <jsp:include page="../templetes/head.jsp"></jsp:include>
  <jsp:include page="../templetes/topbar.jsp"></jsp:include>
 <script src="../javascripts/configuracion.js" type="text/javascript"></script>
-<title>Configuracion</title>
+<title>Configuración</title>
 </head>
 <body>
 

@@ -108,6 +108,7 @@ System.out.println(e.getMessage());
 	}
 	
 	
+	//Edicion de precios (update)
 	 public boolean updatePrecioDetalleServ ( int ID ,int PrecioN ) {
 
 		    boolean flag = false;

@@ -7,7 +7,7 @@
 
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
-<title>Liquidacion</title>
+<title>Liquidación</title>
 </head>
 <body>
 

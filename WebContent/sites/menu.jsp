@@ -15,6 +15,7 @@
 
 <!--menus -->
 	<div class="jumbotron">
+	<center> <b> <h3> Menu principal</h3> </b> </center>
 		<div class="row w-100">
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="liquidar.jsp">

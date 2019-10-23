@@ -41,7 +41,7 @@
 
  
 <form>
-<center><h3>Creacion de turno</h3></center>
+<center><h3>Creación de turno</h3></center>
 
   <div class="form-group">
     <label for="formGroupExampleInput">Nombre</label>

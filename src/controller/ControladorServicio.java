@@ -34,11 +34,9 @@ public class ControladorServicio extends HttpServlet {
 		response.getWriter().print(loQueAmiMeEntra);
 		
 		
-		
-		
 				
-		
-		
+				
+			
 		
 	}
 

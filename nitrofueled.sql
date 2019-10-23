@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2019 at 02:19 AM
+-- Generation Time: Oct 23, 2019 at 04:30 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -126,10 +126,10 @@ CREATE TABLE `precio` (
 --
 
 INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`) VALUES
-(1, 100, 1, 1),
+(1, 200, 1, 1),
 (2, 23418, 1, 2),
-(3, 864, 1, 3),
-(4, 3424, 1, 4),
+(3, 100, 1, 3),
+(4, 20, 1, 4),
 (5, 53, 2, 1),
 (6, 342, 2, 2),
 (7, 5324, 2, 3),

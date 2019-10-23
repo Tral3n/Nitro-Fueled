@@ -45,6 +45,49 @@ public class ModeloCliente extends Conexion{
 		}
 		
 		
+		//Edicion de clientes (update)
+		 public boolean updateCliente ( int ID ,int CCN, String NombresN , String ApellidosN,String Tipo_autoN, String PlacaN ) {
+
+			    boolean flag = false;
+
+			    PreparedStatement objSta = null;
+			
+
+			    try {
+
+			        String sql = "UPDATE cliente SET CC= ? ,NOMBRES= ?,APELLIDOS=? , ID_TIPOAUTO=? ,PLACA=? WHERE ID = ?  ";
+			        objSta = getConnection().prepareStatement(sql);
+			       
+			        objSta.setInt(1, CCN);
+			        objSta.setString(2,NombresN);
+			        objSta.setString(3,ApellidosN);
+			        objSta.setString(4,Tipo_autoN);
+			        objSta.setString(5,PlacaN);
+			        objSta.setInt(6, ID);
+			
+
+
+
+			 
+
+	      flag = objSta.executeUpdate()==1;
+
+			    } catch (Exception e) {
+			        e.printStackTrace();
+			    } finally {
+			        try {
+			            if (objSta != null) {
+			                objSta.close();
+			            }
+			        } catch (Exception e) {
+			             e.printStackTrace();
+			        }
+			    }
+
+			    return flag;
+			    }
+		
+		
 		
 		
 	
