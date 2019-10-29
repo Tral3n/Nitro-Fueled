@@ -3,6 +3,8 @@ $(document).ready(function() {
 	// Funcion para la edicion de cliente
 
 	$(".Editar_m").click(function(e) {
+		
+
 		e.preventDefault();
 
 		var datos = $(this).closest("form").serialize();

@@ -78,7 +78,7 @@ System.out.println(e.getMessage());
 	        ResultSet tabla = null;
 	        
 	        try {
-				String SQL = "SELECT pre.ID , tipo.TIPOAUTO , pre.PRECIO\r\n" + 
+				String SQL = "SELECT pre.ID , tipo.TIPOAUTO , pre.PRECIO , pre.ACTIVO\r\n" + 
 						"FROM precio as pre\r\n" + 
 						"INNER JOIN servicio as serv\r\n" + 
 						"ON pre.ID_SERVICIO = serv.ID\r\n" + 
@@ -96,7 +96,8 @@ System.out.println(e.getMessage());
 					int IDd = tabla.getInt("ID");
 					int PRECIO = tabla.getInt("PRECIO");
 					String TIPOAUTO = tabla.getString("TIPOAUTO");
-				ListaServ.add( new Precio (IDd,PRECIO,TIPOAUTO));
+					boolean ACTIVO = tabla.getBoolean("ACTIVO");
+				ListaServ.add( new Precio (IDd,PRECIO,TIPOAUTO,ACTIVO));
 				}
 				
 				objSta.close();
@@ -109,7 +110,7 @@ System.out.println(e.getMessage());
 	
 	
 	//Edicion de precios (update)
-	 public boolean updatePrecioDetalleServ ( int ID ,int PrecioN ) {
+	 public boolean updatePrecioDetalleServ ( int ID ,int PrecioN , boolean Activo ) {
 
 		    boolean flag = false;
 
@@ -118,11 +119,12 @@ System.out.println(e.getMessage());
 
 		    try {
 
-		        String sql = "UPDATE precio SET PRECIO= ? WHERE ID = ?  ";
+		        String sql = "UPDATE precio SET PRECIO= ? ,  ACTIVO= ? WHERE ID = ?  ";
 		        objSta = getConnection().prepareStatement(sql);
 		       
 		        objSta.setInt(1, PrecioN);
-		        objSta.setInt(2, ID);
+		        objSta.setBoolean(2, Activo);
+		        objSta.setInt(3, ID);
 		
 
 
@@ -145,9 +147,52 @@ System.out.println(e.getMessage());
 
 		    return flag;
 		    }
+	 
+	//Eliminar servicios (update)
+		 public boolean DeleteServ ( int ID ) {
+
+			    boolean flag = false;
+
+			    PreparedStatement objSta = null;
+			
+
+			    try {
+
+			        String sql = "\n" + 
+			        		"DELETE FROM `precio` WHERE precio.ID_SERVICIO = ?  ;\n" + 
+			        		"\n" + 
+			        		"DELETE FROM `servicio` WHERE servicio.ID = ?   ; ";
+			        objSta = getConnection().prepareStatement(sql);
+			       
+			        objSta.setInt(1, ID);
+			
+
+
+
+			 
+
+	      flag = objSta.executeUpdate()==1;
+
+			    } catch (Exception e) {
+			        e.printStackTrace();
+			    } finally {
+			        try {
+			            if (objSta != null) {
+			                objSta.close();
+			            }
+			        } catch (Exception e) {
+			             e.printStackTrace();
+			        }
+			    }
+
+			    return flag;
+			    }
+	 
 	
 	public static void main(String[] args ) {
 	ModeloServicio ms = new ModeloServicio();
+	
+	System.out.println(ms.DeleteServ(3));
 //		System.out.println(ms.GetServicio(1));
 
 	

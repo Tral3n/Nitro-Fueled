@@ -46,8 +46,9 @@
 
 						<th scope="col">Codigo</th>
 						<th scope="col">Tipo de auto</th>
-						<th scope="col">Acciones</th>
+						<th scope="col"></th>
 						<th scope="col">Precio</th>
+						<th scope="col">Activo</th>
 					</tr>
 
 
@@ -59,11 +60,12 @@
 						for (Precio s : ListaServ) {
 					%>
 
-					<tr>
+					<tr <%=s.isACTIVO()? "": "class=\"p-3 mb-2 bg-secondary text-red\"" %> >
 
 						<td><%=s.getID()%></td>
 						<td><%=s.getTIPOAUTO()%></td>
 						<td>
+						
 							<!-- boton modal de editar -->
 							<button type="button" class="btn btn-primary">
 								<span data-toggle="modal" data-target="#modal<%=s.getID()%>"
@@ -93,6 +95,19 @@
 													<input   name="Precio_nuevo" type="number" value="<%=s.getPRECIO()%>"
 															class="form-control form-control-sm" id="Precio_nuevo"
 															placeholder="Precio nuevo">
+												<div class="form-group row">		
+											<label for="Activo"
+														class="col-sm-2 col-form-label col-form-label-sm">Activo</label>															
+   <select  name="Activo" class="form-control"  id="exampleFormControlSelect1">
+
+      <option value = "1">Activo</option>
+      <option value = "0">Desactivado</option>
+      
+ 			
+      
+    
+    </select>
+    </div>	
 														<input   style="visibility: hidden" name="ID_Precio" type="text" value="<%=s.getID()%>"
 															class="form-control form-control-sm" id="ID_Precio"
 															placeholder="Precio nuevo">
@@ -117,10 +132,17 @@
 								</div>
 							</div>
 						</td>
-						<td><%=s.getPRECIO()%></td>
+						<td class="text-right"> $ <%=s.getPRECIO()%> </td>
 
 
+<td> <!-- Default checked -->
+<div class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" id="defaultChecked2" disabled="disabled" <%= s.isACTIVO()?"checked":""%>>
+  <label class="custom-control-label" for="defaultChecked2">	</label>
+</div>
+</td>
 					</tr>
+					
 
 					<%
 						}

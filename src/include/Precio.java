@@ -4,14 +4,22 @@ public class Precio {
 	private int ID; 
 	 private int PRECIO;
 	 	 private String TIPOAUTO;
-		public Precio(int iD, int pRECIO, String tIPOAUTO) {
+	 	 private boolean ACTIVO;
+		public Precio(int iD, int pRECIO, String tIPOAUTO, boolean aCTIVO ) {
 			super();
 			ID = iD;
 			PRECIO = pRECIO;
 			TIPOAUTO = tIPOAUTO;
+			ACTIVO = aCTIVO;
 		}
 		public int getID() {
 			return ID;
+		}
+		public boolean isACTIVO() {
+			return ACTIVO;
+		}
+		public void setACTIVO(boolean aCTIVO) {
+			ACTIVO = aCTIVO;
 		}
 		public void setID(int iD) {
 			ID = iD;
@@ -30,8 +38,9 @@ public class Precio {
 		}
 		@Override
 		public String toString() {
-			return "Precio [ID=" + ID + ", PRECIO=" + PRECIO + ", TIPOAUTO=" + TIPOAUTO + "]";
+			return "Precio [ID=" + ID + ", PRECIO=" + PRECIO + ", TIPOAUTO=" + TIPOAUTO + ", ACTIVO=" + ACTIVO + "]";
 		}
+	
 
 	
 	 

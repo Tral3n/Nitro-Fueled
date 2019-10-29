@@ -16,7 +16,9 @@ public class ModeloCliente extends Conexion{
 		        ResultSet tabla = null;
 		        
 		        try {
-					String SQL = "SELECT * FROM cliente" ;
+					String SQL = "SELECT cli.ID, cli.CC , cli.NOMBRES , cli.APELLIDOS , cli.ID_TIPOAUTO , tipo.TIPOAUTO , cli.PLACA\n" + 
+							"FROM cliente as cli\n" + 
+							"inner join tipoauto as tipo on cli.ID_TIPOAUTO = tipo.ID" ;
 					objSta = getConnection().prepareStatement(SQL);
 					
 					
@@ -29,10 +31,11 @@ public class ModeloCliente extends Conexion{
 						String NOMBRES = tabla.getString("NOMBRES");
 						String APELLIDOS = tabla.getString("APELLIDOS");
 						int ID_TIPOAUTO = tabla.getInt("ID_TIPOAUTO");
+						String TIPOAUTO = tabla.getString ("TIPOAUTO");
 						String PLACA = tabla.getString("PLACA");
 						
 						
-					ListaClient.add( new Cliente(ID, CC, NOMBRES, APELLIDOS, ID_TIPOAUTO, PLACA) );
+						ListaClient.add( new Cliente(ID, CC, NOMBRES, APELLIDOS, ID_TIPOAUTO,TIPOAUTO, PLACA) );
 					}
 					
 					objSta.close();
@@ -46,7 +49,7 @@ public class ModeloCliente extends Conexion{
 		
 		
 		//Edicion de clientes (update)
-		 public boolean updateCliente ( int ID ,int CCN, String NombresN , String ApellidosN,String Tipo_autoN, String PlacaN ) {
+		 public boolean updateCliente ( int CCN, String NombresN , String ApellidosN,int Tipo_autoN, String PlacaN, int ID  ) {
 
 			    boolean flag = false;
 
@@ -61,7 +64,7 @@ public class ModeloCliente extends Conexion{
 			        objSta.setInt(1, CCN);
 			        objSta.setString(2,NombresN);
 			        objSta.setString(3,ApellidosN);
-			        objSta.setString(4,Tipo_autoN);
+			        objSta.setInt(4,Tipo_autoN);
 			        objSta.setString(5,PlacaN);
 			        objSta.setInt(6, ID);
 			

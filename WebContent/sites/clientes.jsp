@@ -16,6 +16,7 @@ ModeloCliente c = new ModeloCliente();
 <head>
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+  <script src = "../javascripts/cliente.js"> </script>
 <title>Clientes</title>
 
 </head>
@@ -24,7 +25,7 @@ ModeloCliente c = new ModeloCliente();
 <body>
 
 
-`
+
 
 
 
@@ -63,13 +64,12 @@ ModeloCliente c = new ModeloCliente();
       <td><%= s.getCC() %></td>
        <td><%= s.getNOMBRES() %></td>
         <td><%= s.getAPELLIDOS() %></td>
-         <td><%= s.getID_TIPOAUTO() %></td>
+         <td><%= s.getTIPOAUTO() %></td>
           <td><%= s.getPLACA() %></td>
       <td>
 							<!-- boton modal de editar -->
-							<button type="button" class="btn btn-primary">
-								<span data-toggle="modal" data-target="#modal<%=s.getID()%>"
-									class="fa  fa-pencil-alt" aria-hidden="true"></span>
+							<button type="button" class=" fa  fa-pencil-alt btn btn-primary" data-toggle="modal" data-target="#modal<%=s.getID()%>">
+							
 							</button> <!-- Modal -->
 							<div class="modal fade" id="modal<%=s.getID()%>" tabindex="-1"
 								role="dialog" aria-labelledby="exampleModalLabel"
@@ -113,11 +113,13 @@ ModeloCliente c = new ModeloCliente();
 														
 															
 													<label for="formGroupExampleInput2">Tipo de auto</label>
-   <select class="form-control" selectedIndex="<%=s.getID_TIPOAUTO()%>" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
+   <select  name="Tipo_auto_nuevo" class="form-control"  id="exampleFormControlSelect1">
+
+      <option value = "1">Automovil</option>
+      <option value = "2">Moto</option>
+      <option value = "3">Campero</option>
+      <option value = "4">Bus</option>
+      
     
     </select>
 															
@@ -130,8 +132,8 @@ ModeloCliente c = new ModeloCliente();
 															
 															
 															
-														<input   style="visibility: hidden" name="ID_Cliente" type="text" value="<%=s.getID()%>"
-															class="form-control form-control-sm" id="ID_Cliente"
+														<input   style="visibility: hidden" name="ID" type="text" value="<%=s.getID()%>"
+															class="form-control form-control-sm" id="ID"
 															placeholder="">
 															
 															

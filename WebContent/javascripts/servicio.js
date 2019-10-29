@@ -3,8 +3,9 @@ $(document).ready(function() {
 	// Funcion para la edicion de detalle de servicios
 
 	$(".Editar_m").click(function(e) {
-		e.preventDefault();
 
+		e.preventDefault();
+	
 		var datos = $(this).closest("form").serialize();
 
 

@@ -42,6 +42,7 @@ ModeloServicio ms = new ModeloServicio();
  
       <th scope="col">Codigo</th>
       <th scope="col">Servicio</th>
+      <th scope="col"></th>
       <th scope="col">Ver</th>
     </tr>
  
@@ -59,6 +60,50 @@ for(Servicio s: ListaServ) {
      	
       <td><%= s.getID()  %></td>
       <td><%= s.getNOMBRE()  %></td>
+      <td>
+						<button data-toggle="modal" data-target="#modal" id="Guardar"
+							 class="btn btn-danger fa  fa-times-circle"> 
+
+							
+
+
+						</button>
+						<div class="modal fade" id="modal" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<form class="Editar">
+										<div class="modal-body">
+											<!-- body del formulario -->
+
+											<p>¿Esta seguro de eliminar el servicio?	</p>
+
+										</div>
+
+      
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">NO</button>
+											<button  id="btnsi" type="submit" class="btn btn-primary Editar_m">SI</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						
+						
+								 
+						</td>
+						
+						
          <td> <a href="../templetes/detalleservicio.jsp?id=<%=s.getID()  %>" class="h6"> <span class="fa  fa-eye" aria-hidden="true"></span> </a> </td>
     
     </tr>
@@ -87,6 +132,9 @@ for(Servicio s: ListaServ) {
 						
 						</button>
 						</a>
+						
+						
+					
 						
 						
 						

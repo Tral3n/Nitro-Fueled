@@ -22,12 +22,13 @@ public class ControladorServicio extends HttpServlet {
 		ModeloServicio mse = new ModeloServicio();
 		
 		int Precio_nuevo =Integer.parseInt(request.getParameter("Precio_nuevo"));
+		boolean Activo = Boolean.parseBoolean((request.getParameter("Activo"))) ;
 		int ID =Integer.parseInt(request.getParameter("ID_Precio"));
 	
 		
 
 		
-		boolean loQueAmiMeEntra  = mse.updatePrecioDetalleServ(ID , Precio_nuevo);
+		boolean loQueAmiMeEntra  = mse.updatePrecioDetalleServ(ID , Precio_nuevo , Activo);
 		
 		mse.cerrarConexion();
 		

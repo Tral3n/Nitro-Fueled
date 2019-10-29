@@ -7,14 +7,22 @@ public class Cliente {
 	private String NOMBRES ;
 	private String APELLIDOS ;
 	private int ID_TIPOAUTO;
+	private String TIPOAUTO;
+	public String getTIPOAUTO() {
+		return TIPOAUTO;
+	}
+	public void setTIPOAUTO(String tIPOAUTO) {
+		TIPOAUTO = tIPOAUTO;
+	}
 	private String PLACA ;
-	public Cliente(int iD, int cC, String nOMBRES, String aPELLIDOS, int iD_TIPOAUTO, String pLACA) {
+	public Cliente(int iD, int cC, String nOMBRES, String aPELLIDOS, int iD_TIPOAUTO,String tIPOAUTO, String pLACA) {
 		super();
 		ID = iD;
 		CC = cC;
 		NOMBRES = nOMBRES;
 		APELLIDOS = aPELLIDOS;
 		ID_TIPOAUTO = iD_TIPOAUTO;
+		TIPOAUTO = tIPOAUTO;
 		PLACA = pLACA;
 	}
 	public int getID() {
@@ -56,8 +64,8 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [ID=" + ID + ", CC=" + CC + ", NOMBRES=" + NOMBRES + ", APELLIDOS=" + APELLIDOS
-				+ ", ID_TIPOAUTO=" + ID_TIPOAUTO + ", PLACA=" + PLACA + "]";
+				+ ", ID_TIPOAUTO=" + ID_TIPOAUTO + ", TIPOAUTO=" + TIPOAUTO + ", PLACA=" + PLACA + "]";
 	}
-	
+
 	 
 }
