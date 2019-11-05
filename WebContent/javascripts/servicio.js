@@ -26,4 +26,34 @@ $(document).ready(function() {
 
 	});
 
+	$(".Eliminar_s").click(function(e) {
+
+		e.preventDefault();
+
+		var datos = $(this).closest("form").serialize();
+
+		console.log(datos);
+		
+		$.ajax({
+			
+		    url: '../ControladorServicio?'+ datos ,
+		    type: 'DELETE',
+		    success: function(res) {
+		    	if (res == "true") {
+
+					alert("Se cambio la 'Vuelta' exitosamente");
+					document.location.reload(true);
+				} else {
+
+					alert("no se hizo nada");
+
+				}
+		    }
+		});
+
+
+
+	});
+
 });
+

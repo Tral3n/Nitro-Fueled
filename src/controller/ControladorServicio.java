@@ -17,7 +17,7 @@ import model.ModeloServicio;
 public class ControladorServicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest  request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ModeloServicio mse = new ModeloServicio();
 		
@@ -35,16 +35,32 @@ public class ControladorServicio extends HttpServlet {
 		response.getWriter().print(loQueAmiMeEntra);
 		
 		
-				
+	
 				
 			
 		
 	}
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)throws ServletException,   IOException
+            {
+		
+		System.out.println(request.getParameter("ID_Servicio"));
+		ModeloServicio mse = new ModeloServicio();
+		int ID =Integer.parseInt(request.getParameter("ID_Servicio"));
+		
+		boolean loQueAmiMeEntra =mse.DeleteServ(ID)	;
+				
+       mse.cerrarConexion();
+		
+		response.getWriter().print(loQueAmiMeEntra);
+            }
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		doGet(request, response);
+		
+		
 	}
 
 }

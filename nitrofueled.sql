@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 04:30 AM
+-- Generation Time: Nov 05, 2019 at 01:26 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,7 +42,10 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA`) VALUES
-(1, 1036687148, 'edgardes', 'traled', 1, 'udf 213');
+(1, 1036687148, 'Dio', 'dfsf', 3, 'udf 213'),
+(2, 1234141, 'Jotaro', 'gutierrez', 1, '25252'),
+(3, 1, 'jojo', 'bizarre', 3, 'joj413'),
+(4, 5675, 'A name', 'A Lastname', 1, 'odr231');
 
 -- --------------------------------------------------------
 
@@ -61,7 +64,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`ID`, `CANTIDAD`, `PORCENTAJE`) VALUES
-(1, 2, 5);
+(1, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -118,22 +121,23 @@ CREATE TABLE `precio` (
   `ID` int(11) NOT NULL,
   `PRECIO` int(11) NOT NULL,
   `ID_SERVICIO` int(11) NOT NULL,
-  `ID_TIPOAUTO` int(11) NOT NULL
+  `ID_TIPOAUTO` int(11) NOT NULL,
+  `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `precio`
 --
 
-INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`) VALUES
-(1, 200, 1, 1),
-(2, 23418, 1, 2),
-(3, 100, 1, 3),
-(4, 20, 1, 4),
-(5, 53, 2, 1),
-(6, 342, 2, 2),
-(7, 5324, 2, 3),
-(8, 800, 2, 4);
+INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VALUES
+(1, 9789, 1, 1, 0),
+(2, 23418, 1, 2, 1),
+(3, 4545, 1, 3, 0),
+(4, 4636, 1, 4, 1),
+(5, 4564, 2, 1, 0),
+(6, 342, 2, 2, 0),
+(7, 5324, 2, 3, 1),
+(8, 800, 2, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -174,6 +178,29 @@ INSERT INTO `tipoauto` (`ID`, `TIPOAUTO`) VALUES
 (2, 'Moto'),
 (3, 'Campero'),
 (4, 'Bus');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `turno`
+--
+
+CREATE TABLE `turno` (
+  `NROTURN` int(11) NOT NULL,
+  `CEDULA` varchar(30) NOT NULL,
+  `PLACA` varchar(6) NOT NULL,
+  `ID_TIPOAUTO` int(11) NOT NULL,
+  `HORA_EN` datetime NOT NULL,
+  `CANCEL` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `turno`
+--
+
+INSERT INTO `turno` (`NROTURN`, `CEDULA`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
+(1, '41412', 'edf424', 3, '2019-11-01 16:39:07', 0),
+(2, '5675', 'odr231', 3, '2019-11-01 17:14:55', 0);
 
 --
 -- Indexes for dumped tables
@@ -221,33 +248,38 @@ ALTER TABLE `tipoauto`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Constraints for dumped tables
+-- Indexes for table `turno`
+--
+ALTER TABLE `turno`
+  ADD PRIMARY KEY (`NROTURN`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Constraints for table `cliente`
+-- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`ID_TIPOAUTO`) REFERENCES `tipoauto` (`ID`);
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for table `detalle_fact`
---
-ALTER TABLE `detalle_fact`
-  ADD CONSTRAINT `detalle_fact_ibfk_1` FOREIGN KEY (`ID_FACTURA`) REFERENCES `factura` (`ID_FACTURA`);
-
---
--- Constraints for table `factura`
+-- AUTO_INCREMENT for table `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `cliente` (`ID`);
+  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `precio`
+-- AUTO_INCREMENT for table `servicio`
 --
-ALTER TABLE `precio`
-  ADD CONSTRAINT `precio_ibfk_1` FOREIGN KEY (`ID_TIPOAUTO`) REFERENCES `tipoauto` (`ID`),
-  ADD CONSTRAINT `precio_ibfk_2` FOREIGN KEY (`ID_SERVICIO`) REFERENCES `servicio` (`ID`);
+ALTER TABLE `servicio`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `turno`
+--
+ALTER TABLE `turno`
+  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

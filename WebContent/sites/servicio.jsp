@@ -7,7 +7,7 @@
 ModeloServicio ms = new ModeloServicio();
 //System.out.println(ms.GetServicio(1));
  ArrayList <Servicio> ListaServ = ms.GetListaServ() ;
- ms.cerrarConexion();
+ ms.cerrarConexion();	
 
 %>
 
@@ -16,6 +16,7 @@ ModeloServicio ms = new ModeloServicio();
 <head>
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+  <script src = "../javascripts/servicio.js"></script>
 <title>Servicios</title>
 
 </head>
@@ -61,14 +62,14 @@ for(Servicio s: ListaServ) {
       <td><%= s.getID()  %></td>
       <td><%= s.getNOMBRE()  %></td>
       <td>
-						<button data-toggle="modal" data-target="#modal" id="Guardar"
+						<button data-toggle="modal" data-target="#modal<%=s.getID() %>" id="Eliminar"
 							 class="btn btn-danger fa  fa-times-circle"> 
 
 							
 
 
 						</button>
-						<div class="modal fade" id="modal" tabindex="-1"
+						<div class="modal fade" id="modal<%=s.getID() %>" tabindex="-1"
 							role="dialog" aria-labelledby="exampleModalLabel"
 							aria-hidden="true">
 							<div class="modal-dialog" role="document">
@@ -78,23 +79,31 @@ for(Servicio s: ListaServ) {
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
-										</button>
+										</button>	
 									</div>
-									<form class="Editar">
+								
 										<div class="modal-body">
 											<!-- body del formulario -->
 
-											<p>¿Esta seguro de eliminar el servicio?	</p>
-
+											<p>¿Esta seguro de eliminar el servicio "<%= s.getNOMBRE() %>"?	</p>
+											
+											
 										</div>
 
       
 										<div class="modal-footer">
+											<form class="Eliminar">
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">NO</button>
-											<button  id="btnsi" type="submit" class="btn btn-primary Editar_m">SI</button>
+												
+											<button  id="btnsi" type="submit" class="btn btn-primary Eliminar_s">SI</button>
+											<input   style="visibility: hidden" name="ID_Servicio" type="text" value="<%=s.getID()%>"
+															class="form-control form-control-sm" id="ID_Servicio"
+															placeholder="">
+												
+											</form>	
 										</div>
-									</form>
+									
 								</div>
 							</div>
 						</div>

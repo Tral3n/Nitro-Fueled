@@ -3,8 +3,10 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import include.Cliente;
+import include.Turno;
 
 
 public class ModeloCliente extends Conexion{
@@ -91,7 +93,53 @@ public class ModeloCliente extends Conexion{
 			    }
 		
 		
+		//INSERT de clientes (INSERT)
+		 public boolean InsertCliente ( int CCN, String NombresN , String ApellidosN,int Tipo_autoN, String PlacaN  ) {
+
+			    boolean flag = false;
+
+			    PreparedStatement objSta = null;
+			
+
+			    try {
+
+			        String sql = "INSERT cliente SET CC= ? ,NOMBRES= ?,APELLIDOS=? , ID_TIPOAUTO=? ,PLACA=?  ";
+			        objSta = getConnection().prepareStatement(sql);
+			       
 		
+					
+			        objSta.setInt(1, CCN);
+			        objSta.setString(2,NombresN);
+			        objSta.setString(3,ApellidosN);
+			        objSta.setInt(4,Tipo_autoN);
+			        objSta.setString(5,PlacaN);
+			 
+
+
+
+			 
+
+	      flag = objSta.executeUpdate()==1;
+
+			    } catch (Exception e) {
+			        e.printStackTrace();
+			    } finally {
+			        try {
+			            if (objSta != null) {
+			                objSta.close();
+			            }
+			        } catch (Exception e) {
+			             e.printStackTrace();
+			        }
+			    }
+
+			    return flag;
+			    }
 		
+		 public static void main(String[] args) {
+				ModeloCliente mc = new ModeloCliente();
+boolean comoquiera				  = mc.InsertCliente(1, "jojo", "bizarre", 3, "joj413");
+System.out.println(comoquiera);
+			}
 	
 }

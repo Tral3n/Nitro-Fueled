@@ -34,6 +34,9 @@ boolean loQueAmiMeEntra  = mse.updateCliente(  CCN, NombresN, ApellidosN, Tipo_a
 		
 		response.getWriter().print(loQueAmiMeEntra);
 	}
+	
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

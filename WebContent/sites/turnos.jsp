@@ -44,8 +44,9 @@
 <center><h3>Creación de turno</h3></center>
 
   <div class="form-group">
-    <label for="formGroupExampleInput">Nombre</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre">
+    <label for="formGroupExampleInput">Cedula</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Cedula">
+ 
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Placa</label>
