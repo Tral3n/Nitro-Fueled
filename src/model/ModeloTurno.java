@@ -19,7 +19,7 @@ public class ModeloTurno extends Conexion {
 
 		    try {
 
-		        String sql = "INSERT turno SET CEDULA= ?,PLACA=? , ID_TIPOAUTO=? ,HORA_EN=? ";
+		        String sql = "INSERT turno SET CEDULA= ?,PLACA=? , ID_TIPOAUTO=? ,HORA_EN=NOW() ";
 		        objSta = getConnection().prepareStatement(sql);
 		       
 		        objSta.setInt(1,turno.getCEDULA());
@@ -27,9 +27,9 @@ public class ModeloTurno extends Conexion {
 		        objSta.setInt(3,turno.getID_TIPOAUTO());
 		        
 		        
-		        Object Param = new Timestamp (turno.getHORA_EN().getTime().getTime());
+		       // Object Param = new Timestamp (turno.getHORA_EN().getTime().getTime());
 		       
-		         objSta.setObject(4, Param);
+		         //objSta.setObject(4, Param);
 		         
 		       
 
@@ -39,8 +39,15 @@ public class ModeloTurno extends Conexion {
 
      flag = objSta.executeUpdate()==1;
 
-ModeloCliente ms = new ModeloCliente ();   
-ms.InsertCliente(turno.getCEDULA(), "", "", turno.getID_TIPOAUTO(), turno.getPLACA())
+ModeloCliente ms = new ModeloCliente ();  
+
+if (ms.VerificarExistCliente(turno.getPLACA())) {
+	return false;
+	
+}else {
+	ms.InsertCliente(turno.getCEDULA(), "", "", turno.getID_TIPOAUTO(), turno.getPLACA());
+}
+
 ;     
      
 		    } catch (Exception e) {
@@ -58,10 +65,27 @@ ms.InsertCliente(turno.getCEDULA(), "", "", turno.getID_TIPOAUTO(), turno.getPLA
 		    return flag;
 		    }
 	 
+	//obtener el ultimo turno 
+	 
+	 public int UltimoTurno () {
+
+		    boolean flag = false;
+
+		    PreparedStatement objSta = null;
+		    try {
+
+		        String sql = "SELECT `AUTO_INCREMENT`\n" + 
+		        		"FROM  nitrofueled.turno\n" + 
+		        		"WHERE TABLE_SCHEMA = 'DatabaseName'\n" + 
+		        		"AND   TABLE_NAME   = 'TableName';";
+		        objSta = getConnection().prepareStatement(sql);
+		 
+	 }
+	 
 	 public static void main(String[] args) {
 			ModeloTurno mt = new ModeloTurno();
-			Turno turno = new Turno( 2, 5675, "odr231", 3,Calendar.getInstance(), false);
-System.out.println(mt.InsertTurno(turno));
+	//		Turno turno = new Turno( 3, 452452, "te45g", 3,Calendar.getInstance(), false);
+//System.out.println(mt.InsertTurno(turno));
 		}
 }
 

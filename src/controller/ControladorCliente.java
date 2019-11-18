@@ -17,9 +17,17 @@ public class ControladorCliente extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-ModeloCliente mse = new ModeloCliente();
+		
+		
+		
+		
 
-System.out.println(request.getParameter("Tipo_auto_nuevo"));
+	}
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloCliente mse = new ModeloCliente();
+
+
 		int CCN =Integer.parseInt(request.getParameter("Cedula_nueva"));
 		String NombresN =request.getParameter("Nombres_nuevo");
 		String ApellidosN =request.getParameter("Apellidos_nuevo");
@@ -33,13 +41,34 @@ boolean loQueAmiMeEntra  = mse.updateCliente(  CCN, NombresN, ApellidosN, Tipo_a
 		mse.cerrarConexion();
 		
 		response.getWriter().print(loQueAmiMeEntra);
-	}
+		
+		
 	
-
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+
+		
+		ModeloCliente mse = new ModeloCliente();
+
+
+		int CCN =Integer.parseInt(request.getParameter("Cedula"));
+		String NombresN =request.getParameter("Nombres");
+		String ApellidosN =request.getParameter("Apellidos");
+	int Tipo_autoN =Integer.parseInt(request.getParameter("Tipo_auto"));
+		String PlacaN =request.getParameter("Placa");
+
+		
+		
+boolean loQueAmiMeEntra  = mse.InsertCliente(CCN, NombresN, ApellidosN, Tipo_autoN, PlacaN)	;
+		mse.cerrarConexion();
+		
+		response.getWriter().print(loQueAmiMeEntra);
+		
+		
+
+		
 	}
 
 }

@@ -7,6 +7,7 @@
 
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+  <script src="../javascripts/turno.js" type="text/javascript"></script>
 <title>Turnos</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
      
     </div>
     <div class="col col-lg-2">
-    <input type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="Turno #1">
+    <input type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="<%=    ">
     </div>
   </div>
 </div>
@@ -40,43 +41,38 @@
 
 
  
-<form>
+<form name="Turno"id="Turno">
 <center><h3>Creación de turno</h3></center>
 
   <div class="form-group">
     <label for="formGroupExampleInput">Cedula</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Cedula">
+    <input name="Cedula" type="number" class="form-control" id="formGroupExampleInput" placeholder="Cedula">
  
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Placa</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Placa">
+    <input name="Placa" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Placa">
   </div>
   
   <label for="formGroupExampleInput2">Tipo de auto</label>
-   <select class="form-control" id="exampleFormControlSelect1">
-      <option>Automovil</option>
-      <option>Moto</option>
-      <option>Campero</option>
-      <option>Bus</option>
+   <select  name="Tipo_Auto"  class="form-control" id="exampleFormControlSelect1">
+     <option value = "1">Automovil</option>
+      <option value = "2">Moto</option>
+      <option value = "3">Campero</option>
+      <option value = "4">Bus</option>
     
     </select>
     <br>
       <label for="formGroupExampleInput2">Hora de entrada</label>
-   <input type="time" id="picker" class="form-control " >
- 
- 
- 
-     
-
-  
-</form>
-
-	</div>
+       <input type= "text" id="fecha"  class="form-control" disabled="disabled" >
+<script>
+	 document.getElementById('fecha').value = Date(Date.now()).toString().substr(16, 8);
+	 </script>
 	
-	<div>
-	
-<div class="col-md-2 	">
+ 
+ 
+ <br>
+    <div class="col-md-2 	">
 
 				<a class="text-decoration-none" href="../sites/liquidar.jsp">
 					<button class="btn btn-success">
@@ -90,7 +86,7 @@
 						</button>
 						</a>
 						
-						<button class="btn btn-success">
+						<button class="btn btn-success" type = "submit" id="CrearTurno">
 						
 						<div class=" text-center ">
 							Crear
@@ -100,7 +96,16 @@
 						
 						</button>
 						
-</div>
+</div> 
+
+  
+</form>
+
+	</div>
+	
+	<div>
+	
+
 	
 	
 	</div>

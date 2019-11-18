@@ -170,12 +170,113 @@ ModeloCliente c = new ModeloCliente();
 
 
 	</div>
- <jsp:include page="../templetes/btnVolver.jsp"></jsp:include>
-</div> 
+ <div class="col-md-2">
+
+				<a class="text-decoration-none" href="../sites/menu.jsp">
+					<button class="btn btn-success">
+						
+						<div class=" text-center ">
+							Volver
+							
+							
+						</div>
+						
+						</button>
+						</a>
+						
+ <button type="button" class=" btn btn-success" data-toggle="modal" data-target="#aqui">
+							Crear
+							</button> <!-- Modal -->
+							<div class="modal fade" id="aqui" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Crear cliente nuevo</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<form class="Crear" id="Crear">
+										<div class="modal-body">
+												<!-- body del formulario -->
+
+												<div class="form-group row">
+													<label for="Cedula">Cedula</label>
+													
+													
+													<input   name="Cedula" type="number" value=""
+															class="form-control form-control-sm" id="Cedula"
+															placeholder="Cedula">
+															
+															<label for="Nombres_nuevo">Nombres</label>
+													
+																		<input   name="Nombres" type="text" value=""
+															class="form-control form-control-sm" id="Nombres"
+															placeholder="Nombres">
+															
+															<label for="Apellidos">Apellidos</label>
+													
+															
+															<input   name="Apellidos" type="text" value=""
+															class="form-control form-control-sm" id="Apellidos"
+															placeholder="Apellidos">
+															
+															
+														
+														
+															
+													<label for="formGroupExampleInput2">Tipo de auto</label>
+   <select  name="Tipo_auto" class="form-control"  id="exampleFormControlSelect1">
+
+      <option value = "1">Automovil</option>
+      <option value = "2">Moto</option>
+      <option value = "3">Campero</option>
+      <option value = "4">Bus</option>
+      
+    
+    </select>
+															
+															
+															<label for="Placa">Placa</label>
+															
+															<input   name="Placa" type="text" value=""
+															class="form-control form-control-sm" id="Placa"
+															placeholder="Placa">
+															
+															
+															
+														<input   style="visibility: hidden" name="ID" type="text" value=""
+															class="form-control form-control-sm" id="ID"
+															placeholder="">
+															
+															
+												
+														
+													</div>
+												</div>
+
+											
+																						
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Cancelar</button>
+												<button  id="Cliente_m"  type="submit" class="btn btn-primary Cliente_m">Crear</button>
+											</div>
+									</form>
+											
+											</div>
+									
+									</div>
+									</div> 
+								</div>
+
 
         
 	
-
+</div>
 
 </body>
 </html>                                		                            

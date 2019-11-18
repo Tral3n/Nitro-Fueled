@@ -135,11 +135,37 @@ public class ModeloCliente extends Conexion{
 
 			    return flag;
 			    }
+		 
+		 
+		 
+		 public boolean VerificarExistCliente( String placa) {
+			 
+			 
+			 
+			 boolean resplac =false;
+			   PreparedStatement objSta = null;
+			 
+			 try {
+				String sql = "SELECT * FROM cliente WHERE PLACA = ?;";
+				 objSta = getConnection().prepareStatement(sql);
+				  objSta.setString(1,placa);
+				 ResultSet Table = objSta.executeQuery();
+				 resplac = Table.absolute(1);
+			} catch (Exception e) {
+			System.out.println(e.getMessage());	
+			}
+			 return resplac;
+			 
+		 }
+		 
 		
 		 public static void main(String[] args) {
-				ModeloCliente mc = new ModeloCliente();
-boolean comoquiera				  = mc.InsertCliente(1, "jojo", "bizarre", 3, "joj413");
-System.out.println(comoquiera);
+	
+			// ModeloCliente mse = new ModeloCliente ();
+			 
+			 
+			
+			 
 			}
 	
 }
