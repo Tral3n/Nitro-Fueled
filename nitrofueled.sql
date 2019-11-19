@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2019 at 01:26 PM
+-- Generation Time: Nov 19, 2019 at 02:42 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -43,9 +43,14 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA`) VALUES
 (1, 1036687148, 'Dio', 'dfsf', 3, 'udf 213'),
-(2, 1234141, 'Jotaro', 'gutierrez', 1, '25252'),
+(2, 1234141232, 'Jotaro', 'gutierrez', 1, '25252'),
 (3, 1, 'jojo', 'bizarre', 3, 'joj413'),
-(4, 5675, 'A name', 'A Lastname', 1, 'odr231');
+(4, 5675, 'A name', 'A Lastname', 1, 'odr231'),
+(5, 4, '4324', 'dgdgd', 3, 'fdsff3'),
+(6, 5675, '', '', 3, 'te45g'),
+(7, 35345353, '', '', 3, 'pls123'),
+(8, 34342, '', '', 3, 'sdfs'),
+(9, 34234324, '', '', 4, '2423');
 
 -- --------------------------------------------------------
 
@@ -199,8 +204,14 @@ CREATE TABLE `turno` (
 --
 
 INSERT INTO `turno` (`NROTURN`, `CEDULA`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
-(1, '41412', 'edf424', 3, '2019-11-01 16:39:07', 0),
-(2, '5675', 'odr231', 3, '2019-11-01 17:14:55', 0);
+(1, '41412', 'edf424', 3, '2019-11-01 16:39:07', 1),
+(2, '5675', 'odr231', 3, '2019-11-01 17:14:55', 0),
+(3, '5675', 'odr231', 3, '2019-11-15 15:39:29', 0),
+(4, '5675', 'te45g', 3, '2019-11-15 15:41:27', 0),
+(5, '452452', 'te45g', 3, '2019-11-15 15:43:13', 0),
+(6, '35345353', 'pls123', 3, '2019-11-15 16:02:42', 0),
+(7, '34342', 'sdfs', 3, '2019-11-18 16:24:05', 0),
+(8, '34234324', '2423', 4, '2019-11-18 16:28:37', 0);
 
 --
 -- Indexes for dumped tables
@@ -261,7 +272,7 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `factura`
@@ -279,7 +290,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT for table `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
