@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="model.ModeloTurno" %>
+    <% ModeloTurno mt = new ModeloTurno(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,7 @@
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
   <script src="../javascripts/turno.js" type="text/javascript"></script>
+  
 <title>Turnos</title>
 </head>
 <body>
@@ -30,10 +33,10 @@
     
     </div>
     <div class="col-md-auto">
-     
+     	
     </div>
     <div class="col col-lg-2">
-    <input type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="<%=    ">
+    <input  type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="Turno: <%=mt.UltimoTurno() %>">
     </div>
   </div>
 </div>
@@ -46,16 +49,16 @@
 
   <div class="form-group">
     <label for="formGroupExampleInput">Cedula</label>
-    <input name="Cedula" type="number" class="form-control" id="formGroupExampleInput" placeholder="Cedula">
+    <input name="Cedula" type="number" class="form-control" id="Cedula" placeholder="Cedula" required>
  
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Placa</label>
-    <input name="Placa" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Placa">
+    <input name="Placa" type="text" class="form-control" id="Placa" placeholder="Placa" size="6">
   </div>
   
   <label for="formGroupExampleInput2">Tipo de auto</label>
-   <select  name="Tipo_Auto"  class="form-control" id="exampleFormControlSelect1">
+   <select  name="Tipo_Auto"  class="form-control" id="Tipo_Auto" >
      <option value = "1">Automovil</option>
       <option value = "2">Moto</option>
       <option value = "3">Campero</option>
@@ -74,8 +77,8 @@
  <br>
     <div class="col-md-2 	">
 
-				<a class="text-decoration-none" href="../sites/liquidar.jsp">
-					<button class="btn btn-success">
+				<a  class="btn btn-success" href="../sites/liquidar.jsp">
+					
 						
 						<div class=" text-center ">
 							Volver
@@ -83,7 +86,7 @@
 							
 						</div>
 						
-						</button>
+	
 						</a>
 						
 						<button class="btn btn-success" type = "submit" id="CrearTurno">
@@ -114,3 +117,4 @@
 
 </body>
 </html>
+    <%mt.cerrarConexion(); %>

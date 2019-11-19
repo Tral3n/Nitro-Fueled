@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import ="java.util.ArrayList ,model.* ,include.*" 
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +10,24 @@
 
 <jsp:include page="../templetes/head.jsp"></jsp:include>
 <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+<% ModeloTurno mt = new ModeloTurno();
+Turno turno = null;
+if(request.getParameter("NROTURN")!= null){
+	
+	  turno = mt.GetTurnoActivo(Integer.parseInt(request.getParameter("NROTURN")));
+
+	}
+
+
+
+
+%>
 <title>Liquidar</title>
 </head>
 <body>
+<%=turno %>
 
-	<br>
-	<br>
+	
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col col-lg-2"></div>
@@ -39,6 +54,31 @@
 					Importar Turno * <span data-toggle="modal" data-target="#modal"
 						class="fa  fa-file-import" aria-hidden="true"></span>
 				</button>
+			<% 
+    if (request.getParameter("NROTURN") != null) {
+        if (turno == null) { 
+%>
+            <div class="alert alert-danger" role="alert">
+                El turno no existe!!
+            </div>
+<%
+        } else {
+            if (turno.isCANCEL()) {
+%>
+                <div class="alert alert-danger" role="alert">
+                    El turno  ya fue liquidado!!
+                </div>
+<%
+            }
+
+        }
+
+    } 
+%>
+						
+				
+				
+				
 				<!-- Modal -->
 
 				<div class="modal fade" id="modal" tabindex="-1" role="dialog"
@@ -62,8 +102,8 @@
 											class="col-sm-2 col-form-label col-form-label-sm">Turno</label>
 										<div class="col-sm-10">
 
-											<input name="Precio_nuevo" type="number" value=""
-												class="form-control form-control-sm" id="Precio_nuevo"
+											<input name="NROTURN" type="number" value=""
+												class="form-control form-control-sm" id="NROTURN"
 												placeholder="Numero de turno">
 
 
@@ -77,7 +117,7 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Cancelar</button>
-									<button type="submit" class="btn btn-primary Editar_m">Buscar</button>
+									<button id="Buscar_T" type="submit" class="btn btn-primary Buscar_T">Buscar</button>
 								</div>
 							</form>
 						</div>
@@ -135,7 +175,7 @@
 				<div class="row">
 					<div class="col"></div>
 					<div class="col-md-auto">
-						<button type="button" class="btn btn-secondary"
+						<button disabled="disabled" type="button" class="btn btn-secondary"
 							data-toggle="modal2" data-target="#modal2">
 							Agregar servicio <span data-toggle="modal2" data-target="#modal2"
 								class="fa  fa-plus" aria-hidden="true"></span>
@@ -209,3 +249,4 @@
 
 </body>
 </html>
+    <%mt.cerrarConexion(); %> 
