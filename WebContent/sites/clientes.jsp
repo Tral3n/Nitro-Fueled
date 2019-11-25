@@ -67,11 +67,58 @@ ModeloCliente c = new ModeloCliente();
          <td><%= s.getTIPOAUTO() %></td>
           <td><%= s.getPLACA() %></td>
       <td>
+      <!-- boton modal eliminar -->
+     <button data-toggle="modal" data-target="#eliminar<%=s.getID()%>" id="Eliminar"
+							 class="btn btn-danger fa  fa-times-circle"> 
+
+							
+
+
+						</button>
+						<div class="modal fade" id="eliminar<%=s.getID() %>" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>	
+									</div>
+								
+										<div class="modal-body">
+											<!-- body del formulario -->
+
+											<p>¿Esta seguro de eliminar el cliente :"<%= s.getNOMBRES()  %> "?	</p>
+											
+											
+										</div>
+
+      
+										<div class="modal-footer">
+											<form class="Eliminar">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">NO</button>
+												
+											<button  id="btnsi" type="submit" class="btn btn-primary Eliminar_c">SI</button>
+											<input   style="visibility: hidden" name="ID" type="text" value="<%=s.getID()%>"
+															class="form-control form-control-sm" id="ID"
+															placeholder="">
+												
+											</form>	
+										</div>
+									
+								</div>
+							</div>
+						</div>
+						
 							<!-- boton modal de editar -->
-							<button type="button" class=" fa  fa-pencil-alt btn btn-primary" data-toggle="modal" data-target="#modal<%=s.getID()%>">
+							<button type="button" class=" fa  fa-pencil-alt btn btn-primary" data-toggle="modal" data-target="#editar<%=s.getID()%>">
 							
 							</button> <!-- Modal -->
-							<div class="modal fade" id="modal<%=s.getID()%>" tabindex="-1"
+							<div class="modal fade" id="editar<%=s.getID()%>" tabindex="-1"
 								role="dialog" aria-labelledby="exampleModalLabel"
 								aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -83,7 +130,7 @@ ModeloCliente c = new ModeloCliente();
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<form class="Editar">
+										<form class="Editar">	
 										<div class="modal-body">
 												<!-- body del formulario -->
 

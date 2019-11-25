@@ -148,6 +148,35 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 				return turno;
 				
 			}
+			
+		public String TipoAutoname (int tipo) {
+		
+			if (tipo == 1) {
+				
+			  return  "Automovil";
+			}else if (tipo == 2){
+				
+				  return  "Moto";
+				
+			}else if (tipo == 3){
+				
+				  return  "Campero";
+				
+			}else if (tipo == 4){
+				
+				  return  "Bus";
+				
+			}
+			
+			
+			
+			
+			return  "";
+		}
+			
+			
+			
+			
 	 
 	 public static void main(String[] args) {
 			ModeloTurno mt = new ModeloTurno();

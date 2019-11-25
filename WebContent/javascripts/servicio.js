@@ -26,6 +26,8 @@ $(document).ready(function() {
 
 	});
 
+	//funciion elimminar servicio
+	
 	$(".Eliminar_s").click(function(e) {
 
 		e.preventDefault();
@@ -53,6 +55,41 @@ $(document).ready(function() {
 
 
 
+	});
+	
+	
+	
+	//Funcion crear servicio nuevo
+	$(".Crear_s").click(function(e){
+		e.preventDefault();
+		
+		
+	
+		
+		var datos =	$(".Crear").serialize();
+		
+		$.post("../ControladorServicio?"+ datos, function (res,est,jqXHR){
+			
+			console.log (res);
+			if (res == "true") {
+
+				alert("Se cambio la 'Vuelta' exitosamente");
+				document.location.reload(true);
+			} else {
+
+				alert("no se hizo nada");
+
+			}
+			
+			
+			
+		});
+		
+	
+	
+
+		
+		
 	});
 
 });

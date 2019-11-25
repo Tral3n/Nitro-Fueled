@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2019 at 02:42 PM
+-- Generation Time: Nov 25, 2019 at 02:38 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -135,14 +135,18 @@ CREATE TABLE `precio` (
 --
 
 INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VALUES
-(1, 9789, 1, 1, 0),
+(1, 9789, 1, 1, 1),
 (2, 23418, 1, 2, 1),
-(3, 4545, 1, 3, 0),
+(3, 4545, 1, 3, 1),
 (4, 4636, 1, 4, 1),
-(5, 4564, 2, 1, 0),
-(6, 342, 2, 2, 0),
+(5, 4564, 2, 1, 1),
+(6, 342, 2, 2, 1),
 (7, 5324, 2, 3, 1),
-(8, 800, 2, 4, 0);
+(8, 800, 2, 4, 1),
+(18, 0, 7, 1, 1),
+(19, 0, 7, 2, 1),
+(20, 0, 7, 3, 1),
+(21, 0, 7, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,16 @@ CREATE TABLE `servicio` (
 
 INSERT INTO `servicio` (`ID`, `NOMBRE`) VALUES
 (1, 'Polichado'),
-(2, 'Lavado');
+(2, 'Lavado'),
+(7, 'Prueba');
+
+--
+-- Triggers `servicio`
+--
+DELIMITER $$
+CREATE TRIGGER `Crear precio` AFTER INSERT ON `servicio` FOR EACH ROW INSERT INTO precio(PRECIO, ID_SERVICIO, ID_TIPOAUTO, ACTIVO) VALUES (0,NEW.ID,1,0), (0,NEW.ID,2,0) , (0,NEW.ID,3,0) ,(0,NEW.ID,4,0)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -281,10 +294,16 @@ ALTER TABLE `factura`
   MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `precio`
+--
+ALTER TABLE `precio`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT for table `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `turno`

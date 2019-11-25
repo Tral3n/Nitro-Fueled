@@ -163,9 +163,51 @@ public class ModeloServicio extends Conexion {
 
 		return flag;
 	}
+	
+	//INSERT de servicio (INSERT)
+	 public boolean InsertServicio ( String Nombre ) {
+
+		    boolean flag = false;
+
+		    PreparedStatement objSta = null;
+		
+
+		    try {
+
+		        String sql = "INSERT servicio SET NOMBRE= ? ";
+		        objSta = getConnection().prepareStatement(sql);
+		       
+	
+				
+		        objSta.setString(1, Nombre);
+		      
+		 
+
+
+
+		 
+
+     flag = objSta.executeUpdate()==1;
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        try {
+		            if (objSta != null) {
+		                objSta.close();
+		            }
+		        } catch (Exception e) {
+		             e.printStackTrace();
+		        }
+		    }
+
+		    return flag;
+		    }
 
 	public static void main(String[] args) {
 		ModeloServicio ms = new ModeloServicio();
+		
+	
 
 	}
 }

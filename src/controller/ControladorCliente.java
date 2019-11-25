@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ModeloCliente;
+import model.ModeloServicio;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/ControladorCliente" })
@@ -71,4 +72,19 @@ boolean loQueAmiMeEntra  = mse.InsertCliente(CCN, NombresN, ApellidosN, Tipo_aut
 		
 	}
 
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)throws ServletException,   IOException
+    {
+
+System.out.println(request.getParameter("ID"));
+ModeloCliente mse = new ModeloCliente();
+int ID =Integer.parseInt(request.getParameter("ID"));
+
+boolean loQueAmiMeEntra =mse.DeleteClient(ID)	;
+		
+mse.cerrarConexion();
+
+response.getWriter().print(loQueAmiMeEntra);
+    }
+	
+	
 }

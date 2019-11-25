@@ -27,7 +27,7 @@ public class ControladorTurno extends HttpServlet {
 	      int CEDULA =Integer.parseInt(request.getParameter("Cedula"));
 	        String PLACA =request.getParameter("Placa");
 	        int TipoAuto =Integer.parseInt(request.getParameter("Tipo_Auto"));
-	        boolean loQueAmiMeEntra  = mse.InsertTurno(new Turno(0, CEDULA, PLACA, TipoAuto , null, false));
+	        boolean loQueAmiMeEntra  = mse.InsertTurno(new Turno(0, CEDULA, PLACA, TipoAuto , null, false)) ;
 			mse.cerrarConexion();
 			
 			response.getWriter().print(loQueAmiMeEntra);

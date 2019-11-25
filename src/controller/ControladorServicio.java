@@ -58,9 +58,29 @@ public class ControladorServicio extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		doGet(request, response);
+			
+		
+		System.out.println(request.getParameter("Servicio"));
+  ModeloServicio mse = new ModeloServicio();
+		
+		String Nombre =request.getParameter("Servicio");
+
+
+		
+		boolean loQueAmiMeEntra  = mse.InsertServicio(Nombre);
+		
+		mse.cerrarConexion();
+		
+		response.getWriter().print(loQueAmiMeEntra);
+		
+		
+	
+				
+			
+		
+	}
 		
 		
 	}
 
-}
+

@@ -158,6 +158,36 @@ public class ModeloCliente extends Conexion{
 			 
 		 }
 		 
+		// Eliminar cliiente (update)
+			public boolean DeleteClient(int ID) {
+
+				boolean flag = false;
+
+				PreparedStatement objSta = null;
+
+				try {
+
+					String sql = " DELETE FROM cliente WHERE cliente.ID = ? ;";
+					objSta = getConnection().prepareStatement(sql);
+
+					objSta.setInt(1, ID);
+
+					flag = objSta.executeUpdate() == 1;
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (objSta != null) {
+							objSta.close();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+				return flag;
+			}
 		
 		 public static void main(String[] args) {
 	
