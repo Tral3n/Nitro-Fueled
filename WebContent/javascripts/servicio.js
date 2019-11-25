@@ -8,9 +8,7 @@ $(document).ready(function() {
 	
 		var datos = $(this).closest("form").serialize();
 
-
-
-		$.post("../ControladorServicio", datos, function(res, est, jqXHR) {
+		$.ajax({ url: '../ControladorServicio?'+ datos ,type : 'put', success: function (res){
 
 			if (res == "true") {
 
@@ -20,7 +18,12 @@ $(document).ready(function() {
 
 				alert("no se hizo nada");
 
-			}
+			}	
+		}
+		});
+
+		$.put("../ControladorServicio", datos, function(res, est, jqXHR) {
+
 
 		});
 

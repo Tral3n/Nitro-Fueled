@@ -17,7 +17,7 @@ import model.ModeloServicio;
 public class ControladorServicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	protected void doGet(HttpServletRequest  request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest  request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ModeloServicio mse = new ModeloServicio();
 		

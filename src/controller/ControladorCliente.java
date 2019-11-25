@@ -53,6 +53,7 @@ boolean loQueAmiMeEntra  = mse.updateCliente(  CCN, NombresN, ApellidosN, Tipo_a
 		
 		ModeloCliente mse = new ModeloCliente();
 
+		 
 
 		int CCN =Integer.parseInt(request.getParameter("Cedula"));
 		String NombresN =request.getParameter("Nombres");
