@@ -230,7 +230,7 @@ ModeloCliente c = new ModeloCliente();
 						
 						</button>
 						</a>
-						
+									<!-- boton modal de crear -->
  <button type="button" class=" btn btn-success" data-toggle="modal" data-target="#aqui">
 							Crear
 							</button> <!-- Modal -->

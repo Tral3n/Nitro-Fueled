@@ -36,7 +36,7 @@
      	
     </div>
     <div class="col col-lg-2">
-    <input  type="text" class="form-control" id="formGroupExampleInput2" disabled="disabled" value="Turno: <%=mt.UltimoTurno() %>">
+    <input  type="text" class="form-control" id="UltimoTurno" disabled="disabled" value="Turno: <%=mt.UltimoTurno() %>">
     </div>
   </div>
 </div>

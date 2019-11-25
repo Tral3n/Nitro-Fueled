@@ -19,7 +19,7 @@
 		<div class="row w-100">
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="liquidar.jsp">
-					<button class="btn btn-outline-primary btn-block">
+					<button class="btn btn-outline-primary btn-block" id="Liquidacion">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-calculator" aria-hidden="true"></span>
 						</div>
@@ -34,7 +34,7 @@
 			</div>
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="clientes.jsp">
-					<button class="btn btn-outline-success btn-block">
+					<button class="btn btn-outline-success btn-block" id="Clientes">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-car" aria-hidden="true"></span>
 						</div>
@@ -49,7 +49,7 @@
 			</div>
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="servicio.jsp">
-					<button class="btn btn-outline-danger btn-block">
+					<button class="btn btn-outline-danger btn-block"id="Servicios">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-male" aria-hidden="true"></span>
 						</div>
@@ -64,7 +64,7 @@
 			</div>
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="reportes.jsp">
-					<button class="btn btn-outline-warning btn-block">
+					<button class="btn btn-outline-warning btn-block" id="Reportes">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-file-signature" aria-hidden="true"></span>
 						</div>
@@ -83,7 +83,7 @@
 		<div class="row w-100">
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="configuracion.jsp">
-					<button class="btn btn-outline-warning btn-block">
+					<button class="btn btn-outline-warning btn-block" id="Configuracion">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-gear" aria-hidden="true"></span>
 						</div>
