@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2019 at 02:38 PM
+-- Generation Time: Nov 26, 2019 at 04:49 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -43,14 +43,18 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA`) VALUES
 (1, 1036687148, 'Dio', 'dfsf', 3, 'udf 213'),
-(2, 1234141232, 'Jotaro', 'gutierrez', 1, '25252'),
+(2, 1234141232, 'Jotaro', 'gutierrez3', 1, '25252'),
 (3, 1, 'jojo', 'bizarre', 3, 'joj413'),
 (4, 5675, 'A name', 'A Lastname', 1, 'odr231'),
 (5, 4, '4324', 'dgdgd', 3, 'fdsff3'),
 (6, 5675, '', '', 3, 'te45g'),
 (7, 35345353, '', '', 3, 'pls123'),
 (8, 34342, '', '', 3, 'sdfs'),
-(9, 34234324, '', '', 4, '2423');
+(10, 1036687149, 'eDgar', 'Sarmiento', 2, 'MNU466'),
+(11, 124124142, 'jOSE ', '', 2, '143fff'),
+(12, 423424, 'Prueba', '', 2, '123ogg'),
+(13, 4535, 'fsdfs', '', 1, 'eee222'),
+(14, 21424, 'prueba', '', 2, '123oaa');
 
 -- --------------------------------------------------------
 
@@ -60,8 +64,8 @@ INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA
 
 CREATE TABLE `configuracion` (
   `ID` tinyint(4) NOT NULL,
-  `CANTIDAD` tinyint(4) NOT NULL,
-  `PORCENTAJE` tinyint(4) NOT NULL
+  `CANTIDAD` int(4) NOT NULL,
+  `PORCENTAJE` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -79,10 +83,24 @@ INSERT INTO `configuracion` (`ID`, `CANTIDAD`, `PORCENTAJE`) VALUES
 
 CREATE TABLE `detalle_fact` (
   `ID_FACTURA` int(11) NOT NULL,
-  `ID_SERVICIO` int(11) NOT NULL,
-  `DESCUENTO` int(11) NOT NULL,
+  `SERVICIO` varchar(11) NOT NULL,
   `PRECIO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detalle_fact`
+--
+
+INSERT INTO `detalle_fact` (`ID_FACTURA`, `SERVICIO`, `PRECIO`) VALUES
+(3, 'Polichado', 23418),
+(3, 'Lavado', 342),
+(4, 'Prueba', 1000),
+(4, 'Lavado', 342),
+(5, 'Lavado', 342),
+(6, 'Prueba', 1000),
+(6, 'Lavado', 4564),
+(7, 'Polichado', 23418),
+(7, 'Lavado', 342);
 
 -- --------------------------------------------------------
 
@@ -92,10 +110,26 @@ CREATE TABLE `detalle_fact` (
 
 CREATE TABLE `factura` (
   `ID_FACTURA` int(11) NOT NULL,
-  `ID_CLIENTE` int(11) NOT NULL,
-  `TOTALFACTURA` int(11) NOT NULL,
+  `CC` int(11) NOT NULL,
+  `NOMBRE` varchar(30) NOT NULL,
+  `TIPOAUTO` varchar(11) NOT NULL,
+  `PLACA` varchar(6) NOT NULL,
+  `SUBTOTAL` float NOT NULL,
+  `DESCUENTO` float NOT NULL,
+  `TOTALFACTURA` float NOT NULL,
   `FECHA` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `factura`
+--
+
+INSERT INTO `factura` (`ID_FACTURA`, `CC`, `NOMBRE`, `TIPOAUTO`, `PLACA`, `SUBTOTAL`, `DESCUENTO`, `TOTALFACTURA`, `FECHA`) VALUES
+(3, 124124142, '  jOSE   ', 'Moto', '143fff', 23760, 950.4, 22809.6, '2019-11-25 20:27:22'),
+(4, 423424, '  Prueba  ', 'Moto', '123ogg', 1342, 53.68, 1288.32, '2019-11-25 20:30:05'),
+(5, 423424, 'Prueba', 'Moto', '123ogg', 342, 0, 342, '2019-11-25 21:02:46'),
+(6, 4535, 'fsdfs', 'Automovil', 'eee222', 5564, 222.56, 5341.44, '2019-11-25 21:13:44'),
+(7, 21424, 'prueba', 'Moto', '123oaa', 23760, 950.4, 22809.6, '2019-11-25 22:45:15');
 
 -- --------------------------------------------------------
 
@@ -124,7 +158,7 @@ INSERT INTO `login` (`USUARIO`, `CONTRASENA`) VALUES
 
 CREATE TABLE `precio` (
   `ID` int(11) NOT NULL,
-  `PRECIO` int(11) NOT NULL,
+  `PRECIO` float NOT NULL,
   `ID_SERVICIO` int(11) NOT NULL,
   `ID_TIPOAUTO` int(11) NOT NULL,
   `ACTIVO` tinyint(1) NOT NULL
@@ -143,10 +177,10 @@ INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VA
 (6, 342, 2, 2, 1),
 (7, 5324, 2, 3, 1),
 (8, 800, 2, 4, 1),
-(18, 0, 7, 1, 1),
-(19, 0, 7, 2, 1),
-(20, 0, 7, 3, 1),
-(21, 0, 7, 4, 1);
+(18, 1000, 7, 1, 1),
+(19, 1000, 7, 2, 1),
+(20, 1000, 7, 3, 1),
+(21, 1000, 7, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -206,6 +240,7 @@ INSERT INTO `tipoauto` (`ID`, `TIPOAUTO`) VALUES
 CREATE TABLE `turno` (
   `NROTURN` int(11) NOT NULL,
   `CEDULA` varchar(30) NOT NULL,
+  `NOMBRE` varchar(30) NOT NULL,
   `PLACA` varchar(6) NOT NULL,
   `ID_TIPOAUTO` int(11) NOT NULL,
   `HORA_EN` datetime NOT NULL,
@@ -216,15 +251,19 @@ CREATE TABLE `turno` (
 -- Dumping data for table `turno`
 --
 
-INSERT INTO `turno` (`NROTURN`, `CEDULA`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
-(1, '41412', 'edf424', 3, '2019-11-01 16:39:07', 1),
-(2, '5675', 'odr231', 3, '2019-11-01 17:14:55', 0),
-(3, '5675', 'odr231', 3, '2019-11-15 15:39:29', 0),
-(4, '5675', 'te45g', 3, '2019-11-15 15:41:27', 0),
-(5, '452452', 'te45g', 3, '2019-11-15 15:43:13', 0),
-(6, '35345353', 'pls123', 3, '2019-11-15 16:02:42', 0),
-(7, '34342', 'sdfs', 3, '2019-11-18 16:24:05', 0),
-(8, '34234324', '2423', 4, '2019-11-18 16:28:37', 0);
+INSERT INTO `turno` (`NROTURN`, `CEDULA`, `NOMBRE`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
+(1, '41412', '', 'edf424', 3, '2019-11-01 16:39:07', 1),
+(2, '5675', '', 'odr231', 3, '2019-11-01 17:14:55', 1),
+(3, '5675', '', 'odr231', 3, '2019-11-15 15:39:29', 1),
+(4, '5675', '', 'te45g', 3, '2019-11-15 15:41:27', 1),
+(5, '452452', '', 'te45g', 3, '2019-11-15 15:43:13', 1),
+(6, '35345353', '', 'pls123', 3, '2019-11-15 16:02:42', 1),
+(7, '34342', '', 'sdfs', 3, '2019-11-18 16:24:05', 1),
+(8, '34234324', '', '2423', 4, '2019-11-18 16:28:37', 1),
+(9, '124124142', 'jOSE ', '143fff', 2, '2019-11-25 19:47:34', 1),
+(10, '423424', 'Prueba', '123ogg', 2, '2019-11-25 20:29:45', 1),
+(11, '4535', 'fsdfs', 'eee222', 1, '2019-11-25 21:13:28', 1),
+(12, '21424', 'prueba', '123oaa', 2, '2019-11-25 22:44:46', 1);
 
 --
 -- Indexes for dumped tables
@@ -241,15 +280,15 @@ ALTER TABLE `cliente`
 -- Indexes for table `detalle_fact`
 --
 ALTER TABLE `detalle_fact`
-  ADD PRIMARY KEY (`ID_FACTURA`),
-  ADD KEY `ID_SERVICIO` (`ID_SERVICIO`);
+  ADD KEY `ID_SERVICIO` (`SERVICIO`),
+  ADD KEY `ID_FACTURA` (`ID_FACTURA`) USING BTREE;
 
 --
 -- Indexes for table `factura`
 --
 ALTER TABLE `factura`
   ADD PRIMARY KEY (`ID_FACTURA`),
-  ADD KEY `ID_CLIENTE` (`ID_CLIENTE`);
+  ADD KEY `ID_CLIENTE` (`NOMBRE`);
 
 --
 -- Indexes for table `precio`
@@ -285,13 +324,13 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `precio`
@@ -309,7 +348,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT for table `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

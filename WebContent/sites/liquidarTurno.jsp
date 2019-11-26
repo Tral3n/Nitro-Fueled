@@ -316,9 +316,14 @@ if(request.getParameter("NROTURN")!= null){
 
 
 	</div>
-
-
-
+<% 
+	if(request.getParameter("id_factura") != null){
+		int id_factura =Integer.parseInt(request.getParameter("id_factura"));
+%>
+	<jsp:include page="ImpresionFactura.jsp?id_factura=<%= id_factura %>"></jsp:include>
+<%
+	}
+%>
 </body>
 </html>
     <%mt.cerrarConexion(); %> 

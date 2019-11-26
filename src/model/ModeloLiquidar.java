@@ -1,8 +1,16 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import include.Cliente;
 import include.Configuracion;
@@ -10,6 +18,7 @@ import include.Detalle_fact;
 import include.Factura;
 import include.Liquidar;
 import include.Servicio;
+
 
 public class ModeloLiquidar  extends Conexion{
 	
@@ -120,13 +129,13 @@ public class ModeloLiquidar  extends Conexion{
 			        	objSta = getConnection().prepareStatement(sql);
 			        	objSta.setInt(1, lastId);
 			        	objSta.setString(2, detalle.getSERVICIO());
-			        	objSta.setInt(3, detalle.getPRECIO());
+			        	objSta.setFloat(3, detalle.getPRECIO());
 			        	flag = objSta.executeUpdate()==1;
 						
 					}
 			        
 			        
-			 
+			        generarPDF(lastId);
 
 
 			    } catch (Exception e) {
@@ -146,6 +155,78 @@ public class ModeloLiquidar  extends Conexion{
 				
 				
 			}	
+			
+			//select dde factura para el pdf
+public Factura getFactura (int id_factura) {
+				
+				boolean flag = false;
+
+			    PreparedStatement objSta = null;
+			    ResultSet tabla = null;
+			   
+			    Factura factura = null;
+			    ArrayList<Detalle_fact> listaDetalles = new ArrayList<Detalle_fact>();
+			    try {
+
+			        String sql = "SELECT `ID_FACTURA`, `CC`, `NOMBRE`, `TIPOAUTO`, `PLACA`, `SUBTOTAL`, `DESCUENTO`, `TOTALFACTURA`, `FECHA` FROM `factura` WHERE ID_FACTURA= ?";
+			        objSta = getConnection().prepareStatement(sql);
+			        objSta.setInt(1, id_factura);
+			       
+			        tabla = objSta.executeQuery();
+					Calendar FECHA = Calendar.getInstance();
+			        while (tabla.next()) {
+			        	
+			        	int iD_FACTURA = tabla.getInt("ID_FACTURA");
+			        	int cC = tabla.getInt("CC");
+			        	String nOMBRE= tabla.getString("NOMBRE");
+			        	String tIPO_AUTO = tabla.getString("TIPOAUTO");
+			        	String pLACA = tabla.getString("PLACA");
+			        	float sUBTOTAL = tabla.getFloat("SUBTOTAL");
+			        	float dESCUENTO = tabla.getFloat("DESCUENTO");
+			        	float tOTAL_FACTURA = tabla.getFloat("TOTALFACTURA");
+			        	 FECHA.setTimeInMillis(tabla.getTimestamp("FECHA").getTime());
+			        	
+			        	  factura = new Factura(iD_FACTURA, cC, nOMBRE, tIPO_AUTO, pLACA, sUBTOTAL, dESCUENTO, tOTAL_FACTURA, FECHA, listaDetalles);
+			        	  
+					}
+			        
+			       sql = "SELECT `ID_FACTURA`, `SERVICIO`, `PRECIO` FROM `detalle_fact` WHERE ID_FACTURA= ? ";
+					objSta = getConnection().prepareStatement(sql);
+					objSta.setInt(1, id_factura);
+
+					tabla = objSta.executeQuery();
+			       
+			       while(tabla.next()) {
+			    	   
+			    	   String sERVICIO = tabla.getString("SERVICIO");
+			    	   float pRECIO = tabla.getFloat("PRECIO");
+			    	   Detalle_fact detalle = new Detalle_fact(id_factura, sERVICIO, pRECIO);
+			    	   listaDetalles.add(detalle);
+			       }
+			       
+					
+			        
+			        
+			 
+
+
+			    } catch (Exception e) {
+			        e.printStackTrace();
+			    } finally {
+			        try {
+			            if (objSta != null) {
+			                objSta.close();
+			            }
+			        } catch (Exception e) {
+			             e.printStackTrace();
+			        }
+			    }
+
+			    return factura;
+				
+				
+				
+			}
 			
 	public int getLastId() {
 		
@@ -167,10 +248,31 @@ public class ModeloLiquidar  extends Conexion{
 		return lastId;
 	}
 	
-			 public static void main(String[] args) {
-					ModeloLiquidar ml = new ModeloLiquidar();
-					System.out.println(ml.getPreciodetal(7));
-					System.out.println(ml.getLastId());
-					
-			 }
+public void generarPDF (int id_factura) {
+		
+		Document document = new Document();
+		
+		try {
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Tralen\\Documents\\Eclipse Proyects\\Factura"+id_factura+".pdf"));
+			document.open();
+			document.add(new Paragraph("Nitrofueled"));
+			document.add(new Paragraph(getFactura(id_factura).toString()));
+			document.close();
+			writer.close();
+;			
+		}
+		catch(DocumentException e) {
+			e.printStackTrace();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	 public static void main(String[] args) {
+			ModeloLiquidar ml = new ModeloLiquidar();
+			ml.generarPDF(3);
+			
+	 }
 }

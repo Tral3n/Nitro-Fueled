@@ -4,8 +4,8 @@ public class Detalle_fact {
 
 	private int ID_FACTURA;
 	private String SERVICIO;
-	private int PRECIO;
-	public Detalle_fact(int iD_FACTURA, String sERVICIO, int pRECIO) {
+	private float PRECIO;
+	public Detalle_fact(int iD_FACTURA, String sERVICIO, float pRECIO) {
 		super();
 		ID_FACTURA = iD_FACTURA;
 		SERVICIO = sERVICIO;
@@ -27,10 +27,10 @@ public class Detalle_fact {
 	public void setSERVICIO(String sERVICIO) {
 		SERVICIO = sERVICIO;
 	}
-	public int getPRECIO() {
+	public float getPRECIO() {
 		return PRECIO;
 	}
-	public void setPRECIO(int pRECIO) {
+	public void setPRECIO(float pRECIO) {
 		PRECIO = pRECIO;
 	}
 	

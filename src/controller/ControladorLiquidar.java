@@ -87,7 +87,7 @@ public class ControladorLiquidar extends HttpServlet {
 		mc.cerrarConexion();
 		mt.cerrarConexion();
 		
-		System.out.println(fac);
+	
 		
 		response.getWriter().print(flag);
 	}

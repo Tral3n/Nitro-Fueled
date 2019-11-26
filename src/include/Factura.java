@@ -117,7 +117,7 @@ public class Factura  {
 	public String toString() {
 		return "Factura [ID_FACTURA=" + ID_FACTURA + ", CC=" + CC + ", NOMBRE=" + NOMBRE + ", TIPO_AUTO=" + TIPO_AUTO
 				+ ", PLACA=" + PLACA + ", SUBTOTAL=" + SUBTOTAL + ", DESCUENTO=" + DESCUENTO + ", TOTAL_FACTURA="
-				+ TOTAL_FACTURA + ", FECHA=" + FECHA + ", DetalleFact=" + DetalleFact + "]";
+				+ TOTAL_FACTURA + ", FECHA=" + FECHA.getTime() + ", DetalleFact=" + DetalleFact + "]";
 	}
 	
 	
