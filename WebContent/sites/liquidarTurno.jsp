@@ -18,7 +18,10 @@ ArrayList <Liquidar> Lista = null;
 if(request.getParameter("NROTURN")!= null){
 	
 	  turno = mt.GetTurnoActivo(Integer.parseInt(request.getParameter("NROTURN")));
+	  if(turno != null) {
 	   Lista = ml.GetListaServLiq(turno.getID_TIPOAUTO()) ;
+		  
+	  }
 	  
 	  
 	}
@@ -41,16 +44,17 @@ if(request.getParameter("NROTURN")!= null){
 			<div class="col-md-auto"></div>
 			<div class="col col-lg-2">
 				<input type="text" class="form-control" id="formGroupExampleInput2"
-					disabled="disabled" value="Factura #1">
+					disabled="disabled" value="Factura#: <%=ml.getLastId()+1 %>">
 			</div>
 		</div>
 	</div>
 	<div class="jumbotron">
-		<form>
+	
 			<center>
 				<h3>Liquidar</h3>
 			</center>
 			<div>
+		
 				<button type="button" class="btn btn-secondary" data-toggle="modal"
 					data-target="#modal">
 					Importar Turno * <span data-toggle="modal" data-target="#modal"
@@ -59,7 +63,7 @@ if(request.getParameter("NROTURN")!= null){
 			<% 
     if (request.getParameter("NROTURN" )  != null) {
         if (turno == null) { 
-%>
+        	%>
             <div class="alert alert-danger" role="alert">
                 El turno no existe!!
             </div>
@@ -68,7 +72,7 @@ if(request.getParameter("NROTURN")!= null){
             if (turno.isCANCEL()) {
 %>
                 <div class="alert alert-danger" role="alert">
-                    El turno  ya fue liquidado!!
+                    El turno "<%=turno.getNROTURN()%>"  ya fue liquidado!!
                 </div>
 <%
             }
@@ -78,7 +82,7 @@ if(request.getParameter("NROTURN")!= null){
     } 
 %>
 		
-				<!-- Modal -->
+				<!-- Modal  Buscar turno-->
 
 				<div class="modal fade" id="modal" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,7 +96,7 @@ if(request.getParameter("NROTURN")!= null){
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<form class="Editar">
+							<form class="" id="Buscar">
 								<div class="modal-body">
 									<!-- body del formulario -->
 
@@ -101,7 +105,7 @@ if(request.getParameter("NROTURN")!= null){
 											class="col-sm-2 col-form-label col-form-label-sm">Turno</label>
 										<div class="col-sm-10">
 
-											<input name="NROTURN" type="number" value=""
+											<input name="NROTURN" type="number" value="<%=   (turno!=null)?request.getParameter("NROTURN"):""        %>"
 												class="form-control form-control-sm" id="NROTURN"
 												placeholder="Numero de turno">
 
@@ -119,6 +123,7 @@ if(request.getParameter("NROTURN")!= null){
 									<button id="Buscar_T" type="submit" class="btn btn-primary Buscar_T">Buscar</button>
 								</div>
 							</form>
+							
 						</div>
 					</div>
 				</div>
@@ -126,46 +131,48 @@ if(request.getParameter("NROTURN")!= null){
 			</div>
 
 			<br> <br>
+				<form id="CrearLiquidar">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<label for="inputPassword" class="col-sm-1 col-form-label">CC</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputPassword"
-								placeholder="CC" disabled="disabled" value="<%=   (turno!=null)?turno.getCEDULA():""        %>">
+							<input name="Cedula" type="text" class="form-control" id="Cedula"
+								placeholder="CC" readonly value="<%=   (turno!=null)?turno.getCEDULA():""        %>">
 						</div>
 					</div>
 					<div class="col">
 						<label for="inputPassword" class="col-sm-1 col-form-label">Nombres</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputPassword"
-								placeholder="Nombres" disabled="disabled" value="    ">
+							<input name="Nombre" type="text" class="form-control" id="Nombre"
+								placeholder="Nombre" readonly value="<%=   (turno!=null)?turno.getNOMBRE():""%>">
 						</div>
 						
 					</div>
 					<div class="col">
 						<label for="inputPassword" class="col-sm- col-form-label">Tipo</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputPassword"
-								placeholder="Tipo auto" disabled="disabled" value="<%=   (turno!=null)?mt.TipoAutoname(turno.getID_TIPOAUTO()):""        %>">
+							<input name="Tipoauto" type="text" class="form-control" id="Tipoauto"
+								placeholder="Tipo auto" readonly value="<%=   (turno!=null)?mt.TipoAutoname(turno.getID_TIPOAUTO()):""        %>">
 						</div>
 					</div>
 					<div class="col">
 						<label for="inputPassword" class="col-sm-1 col-form-label">Placa</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputPassword"
-								placeholder="Placa" disabled="disabled" value="<%=   (turno!=null)?turno.getPLACA():""        %>">
+							<input  name="Placa" type="text" class="form-control" id="Placa"
+								placeholder="Placa" readonly value="<%=   (turno!=null)?turno.getPLACA():""        %>">
 						</div>
 					</div>
 				</div>
-
+</div>
+	</form>
 
 
 
 
 			</div>
 
-			<br> <br>
+
 			<div class="container">
 				<div class="row justify-content-md-center">
 					<div class="col col-lg-2"></div>
@@ -175,7 +182,9 @@ if(request.getParameter("NROTURN")!= null){
 				<div class="row">
 					<div class="col"></div>
 					<div class="col-md-auto">
-						<button type="button" class="btn btn-secondary"
+					
+					<!-- BOTON AGREGAR SERVICIO -->
+						<button <%= turno == null ? "disabled" : turno.isCANCEL() ? "disabled" : "" %> type="button" class="btn btn-success"
 							data-toggle="modal" data-target="#addserv">
 							Agregar servicio <span data-toggle="modal2" data-target="#modal2"
 								class="fa  fa-plus" aria-hidden="true"></span>
@@ -196,14 +205,14 @@ if(request.getParameter("NROTURN")!= null){
      <table id ="servm" class="table table-hover">
   <thead class="thead-dark">
     <tr>
-    
+    <th scope="col">Id</th>
         <th scope="col">Servicio</th>
       <th scope="col">Precio</th>
    
       
     </tr>
   </thead>
-  <tbody id="carritoMayor">
+  <tbody >
      <%
      if (Lista!=null){
     	 
@@ -212,6 +221,8 @@ if(request.getParameter("NROTURN")!= null){
 
  %>        
   <tr class ="itemprecio">
+
+      <td   scope="row"><%=l.getID_SERVICIO() %> </td>
 
       <td   scope="row"><%=l.getNOMBRE() %> </td>
       <td class="VoySumar" ><%=l.getPRECIO() %> </td>
@@ -232,10 +243,10 @@ if(request.getParameter("NROTURN")!= null){
 					
 					</div>
 					<br>
-					<table class="table table-hover"  id ="TablaGrande"]>
+					<table class="table table-hover"  id ="TablaGrande">
 						<thead class="thead-dark">
 							<tr>
-								
+									<th scope="col">id</th>
 								<th scope="col">Servicio</th>
 								<th scope="col">Precio</th>
 
@@ -247,8 +258,7 @@ if(request.getParameter("NROTURN")!= null){
 			
 						</tbody>
 					</table>
-		</form>
-
+	
 	</div>
 
 	<div>
@@ -263,14 +273,14 @@ if(request.getParameter("NROTURN")!= null){
 				</button>
 			</a>
 
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+		<button disabled="disabled" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="Totalizar">
  Totalizar
 </button>
 
 													
 													
 
-<!-- Modal -->
+<!-- Modal total -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -293,8 +303,8 @@ if(request.getParameter("NROTURN")!= null){
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="TotalTotal"type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>

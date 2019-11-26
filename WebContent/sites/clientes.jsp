@@ -256,13 +256,13 @@ ModeloCliente c = new ModeloCliente();
 													
 													<input   name="Cedula" type="number" value=""
 															class="form-control form-control-sm" id="Cedula"
-															placeholder="Cedula">
+															placeholder="Cedula" required>
 															
 															<label for="Nombres_nuevo">Nombres</label>
 													
 																		<input   name="Nombres" type="text" value=""
 															class="form-control form-control-sm" id="Nombres"
-															placeholder="Nombres">
+															placeholder="Nombres" required>
 															
 															<label for="Apellidos">Apellidos</label>
 													

@@ -3,9 +3,9 @@ package include;
 public class Configuracion {
 	
 	private byte ID ;
-	 private byte CANTIDAD;
-	 private byte PORCENTAJE;
-	public Configuracion(byte iD, byte cANTIDAD, byte pORCENTAJE) {
+	 private int CANTIDAD;
+	 private int PORCENTAJE;
+	public Configuracion(byte iD, int cANTIDAD, int pORCENTAJE) {
 		super();
 		ID = iD;
 		CANTIDAD = cANTIDAD;
@@ -17,13 +17,13 @@ public class Configuracion {
 	public void setID(byte iD) {
 		ID = iD;
 	}
-	public byte getCANTIDAD() {
+	public int getCANTIDAD() {
 		return CANTIDAD;
 	}
 	public void setCANTIDAD(byte cANTIDAD) {
 		CANTIDAD = cANTIDAD;
 	}
-	public byte getPORCENTAJE() {
+	public int getPORCENTAJE() {
 		return PORCENTAJE;
 	}
 	public void setPORCENTAJE(byte pORCENTAJE) {

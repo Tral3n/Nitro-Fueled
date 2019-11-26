@@ -53,6 +53,11 @@
  
   </div>
   <div class="form-group">
+    <label for="formGroupExampleInput">Nombre</label>
+    <input name="Nombre" type="text" class="form-control" id="Nombre" placeholder="Nombre" required>
+ 
+  </div>
+  <div class="form-group">
     <label for="formGroupExampleInput2">Placa</label>
     <input name="Placa" type="text" class="form-control" id="Placa" placeholder="Placa" size="6">
   </div>

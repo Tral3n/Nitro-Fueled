@@ -24,12 +24,13 @@ public class ModeloTurno extends Conexion {
 
 		    try {
 
-		        String sql = "INSERT turno SET CEDULA= ?,PLACA=? , ID_TIPOAUTO=? ,HORA_EN=NOW() ";
+		        String sql = "INSERT turno SET CEDULA= ?,NOMBRE=?,PLACA=? , ID_TIPOAUTO=? ,HORA_EN=NOW() ";
 		        objSta = getConnection().prepareStatement(sql);
 		       
 		        objSta.setInt(1,turno.getCEDULA());
-		        objSta.setString(2,turno.getPLACA());
-		        objSta.setInt(3,turno.getID_TIPOAUTO());
+		        objSta.setString(2,turno.getNOMBRE());
+		        objSta.setString(3,turno.getPLACA());
+		        objSta.setInt(4,turno.getID_TIPOAUTO());
 		        
 		        
 		       // Object Param = new Timestamp (turno.getHORA_EN().getTime().getTime());
@@ -50,7 +51,7 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 	return false;
 	
 }else {
-	ms.InsertCliente(turno.getCEDULA(), "", "", turno.getID_TIPOAUTO(), turno.getPLACA());
+	ms.InsertCliente(turno.getCEDULA(), turno.getNOMBRE(), "", turno.getID_TIPOAUTO(), turno.getPLACA());
 }
 
 ;     
@@ -129,13 +130,14 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 					
 							int NROTURN = tabla.getInt("NROTURN");
 							int CEDULA = tabla.getInt("CEDULA");
+							String NOMBRE = tabla.getString("NOMBRE");
 							String PLACA = tabla.getString("PLACA");
 							int ID_TIPOAUTO = tabla.getInt("ID_TIPOAUTO");
 							boolean CANCEL = tabla.getBoolean("CANCEL");
 							 calendar.setTimeInMillis(tabla.getTimestamp("HORA_EN").getTime());
 				
 					
-						turno = new Turno(NROTURN, CEDULA, PLACA, ID_TIPOAUTO,calendar,CANCEL);
+						turno = new Turno(NROTURN, CEDULA,NOMBRE, PLACA, ID_TIPOAUTO,calendar,CANCEL);
 						
 					
 					}
@@ -175,11 +177,42 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 		}
 			
 			
-			
+		public boolean CancelarTurno(int NroTurno) {
+
+			boolean flag = false;
+
+			PreparedStatement objSta = null;
+
+			try {
+
+				String sql = "UPDATE turno SET CANCEL= 1 WHERE NROTURN = ?  ";
+				objSta = getConnection().prepareStatement(sql);
+
+				objSta.setInt(1, NroTurno);
+				
+
+				flag = objSta.executeUpdate() == 1;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (objSta != null) {
+						objSta.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+			return flag;
+		}	
 			
 	 
 	 public static void main(String[] args) {
 			ModeloTurno mt = new ModeloTurno();
+	
+			
 	//		Turno turno = new Turno( 3, 452452, "te45g", 3,Calendar.getInstance(), false);
 //System.out.println(mt.InsertTurno(turno));
 			

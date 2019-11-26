@@ -4,17 +4,25 @@ import java.util.Calendar;
 
 public class Turno {
 	
-	public Turno(int nROTURN, int cEDULA, String pLACA, int iD_TIPOAUTO, Calendar hORA_EN, boolean cANCEL) {
+	public Turno(int nROTURN, int cEDULA, String nOMBRE , String pLACA, int iD_TIPOAUTO, Calendar hORA_EN, boolean cANCEL) {
 		super();
 		NROTURN = nROTURN;
 		CEDULA = cEDULA;
+		NOMBRE = nOMBRE;
 		PLACA = pLACA;
 		ID_TIPOAUTO = iD_TIPOAUTO;
 		HORA_EN = hORA_EN;
 		CANCEL = cANCEL;
 	}
+	public String getNOMBRE() {
+		return NOMBRE;
+	}
+	public void setNOMBRE(String nOMBRE) {
+		NOMBRE = nOMBRE;
+	}
 	private int NROTURN ;
 	private int CEDULA ;
+	private String NOMBRE ;
 	private String PLACA ;
 		private int ID_TIPOAUTO;
     private Calendar HORA_EN;
@@ -57,8 +65,8 @@ public class Turno {
 	}
 	@Override
 	public String toString() {
-		return "Turno [NROTURN=" + NROTURN + ", CEDULA=" + CEDULA + ", PLACA=" + PLACA + ", ID_TIPOAUTO=" + ID_TIPOAUTO
-				+ ", HORA_EN=" + HORA_EN + ", CANCEL=" + CANCEL + "]";
+		return "Turno [NROTURN=" + NROTURN + ", CEDULA=" + CEDULA + ", NOMBRE=" + NOMBRE + ", PLACA=" + PLACA
+				+ ", ID_TIPOAUTO=" + ID_TIPOAUTO + ", HORA_EN=" + HORA_EN + ", CANCEL=" + CANCEL + "]";
 	}
     
     
