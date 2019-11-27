@@ -25,7 +25,7 @@ import javafx.scene.control.Cell;
 
 public class ModeloLiquidar  extends Conexion{
 	
-	// modelo agregar servicip
+	// Traer servicios activos
 			public ArrayList <Liquidar> GetListaServLiq (int ID_TIPOAUTO){
 				 ArrayList <Liquidar> ListaSevrLiq = new ArrayList <>() ;
 				 PreparedStatement objSta = null;
@@ -127,15 +127,18 @@ public class ModeloLiquidar  extends Conexion{
 			        objSta.setFloat(7, f.getTOTAL_FACTURA());
 			        flag = objSta.executeUpdate()==1;
 			        int lastId = getLastId();
-			        for (Detalle_fact detalle : f.getDetalleFact()) {
-			        	sql = "INSERT INTO `detalle_fact`(`ID_FACTURA`, `SERVICIO`, `PRECIO`) VALUES (?,?,?)";
-			        	objSta = getConnection().prepareStatement(sql);
-			        	objSta.setInt(1, lastId);
-			        	objSta.setString(2, detalle.getSERVICIO());
-			        	objSta.setFloat(3, detalle.getPRECIO());
-			        	flag = objSta.executeUpdate()==1;
-						
-					}
+			        if(f.getDetalleFact() != null) {
+			        	for (Detalle_fact detalle : f.getDetalleFact()) {
+			        		sql = "INSERT INTO `detalle_fact`(`ID_FACTURA`, `SERVICIO`, `PRECIO`) VALUES (?,?,?)";
+			        		objSta = getConnection().prepareStatement(sql);
+			        		objSta.setInt(1, lastId);
+			        		objSta.setString(2, detalle.getSERVICIO());
+			        		objSta.setFloat(3, detalle.getPRECIO());
+			        		flag = objSta.executeUpdate()==1;
+			        		
+			        	}
+			        	
+			        }
 			        
 			        if (imprimir) {
 
@@ -254,16 +257,21 @@ public Factura getFactura (int id_factura) {
 		return lastId;
 	}
 	
-public void generarPDFfac (int id_factura) {
+public void generarPDFfac (int id_factura) throws Exception{
 		
 		Document document = new Document();
 		
 		ModeloTurno mt = new ModeloTurno();
 		
 		
-		Factura factura = getFactura(id_factura);
 		
 		try {
+			Factura factura = getFactura(id_factura);
+			
+			if(factura == null) {
+				throw new Exception("Factura no existe");
+			}
+			
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Tralen\\Documents\\Eclipse Proyects\\Factura"+id_factura+".pdf"));
 			document.open();
 			document.add(new Paragraph("Nitrofueled"));
@@ -311,17 +319,14 @@ public void generarPDFfac (int id_factura) {
 		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	
 	 public static void main(String[] args) {
 			
 		 ModeloLiquidar ml = new ModeloLiquidar();
-		 Factura factura = ml.getFactura(17);
-		 System.out.println(factura);
-		 System.out.println(factura.getDetalleFact().size());
-		 ml.generarPDFfac(17);
+		 System.out.println(ml.GetListaServLiq(1));
 			
 	 }
 }

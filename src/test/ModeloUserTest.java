@@ -8,11 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.ModeloCliente;
-import model.ModeloConfiguracion;
+import include.User;
+import model.ModeloUser;
 
-public class ModeloConfiguracionTest {
-	ModeloConfiguracion mse ;
+public class ModeloUserTest {
+
+	ModeloUser mse;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -23,8 +24,7 @@ public class ModeloConfiguracionTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
-		mse = new ModeloConfiguracion();
+		mse=new ModeloUser();
 	}
 
 	@After
@@ -33,24 +33,22 @@ public class ModeloConfiguracionTest {
 	}
 
 	@Test
-	public void Getconfig() {
-	
-		assertNotNull(mse.GetConfig()	);
-		
-		
-	}
-
-	@Test
-	public void ModificarConfig() {
-	//	fail("Not yet implemented"); 
-		
+	public void Validarcorrecto() {
 
 		
-		boolean actual  = mse. updateConfig(3, 2);
-				
+		
+		boolean actual= mse.validar(new User("admin", "123"));
 		
 		assertTrue(actual);
-		
 	}
-	
+	@Test
+	public void Validarincorrecto() {
+
+		
+		
+		boolean actual= mse.validar(new User("admi343n", "1212413"));
+		
+		assertFalse(actual);
+	}
+
 }

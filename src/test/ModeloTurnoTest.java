@@ -35,11 +35,20 @@ public class ModeloTurnoTest {
 	}
 
 	@Test
-	public void inserarturno() {
+	public void inserarturnoConcliente() {
 	
-		boolean actual =mse.InsertTurno(new Turno(0,1000,"lolo","234tyr",4,null,false));
+		String actual =mse.InsertTurno(new Turno(0,1000,"lolo","532dre",4,null,false));
+		String expected = "{\"turno\": true, \"cliente\": true  }";
+		assertEquals(expected, actual);
 		
-		assertTrue(actual);
+		
+	}
+	@Test
+	public void inserarturnoSolo() {
+	
+		String actual =mse.InsertTurno(new Turno(0,1000,"lolo","234tyr",4,null,false));
+		String expected = "{\"turno\": true, \"cliente\": false  }";
+		assertEquals(expected, actual);
 		
 		
 	}
@@ -48,9 +57,76 @@ public class ModeloTurnoTest {
 	
 int actual =mse.UltimoTurno();
 		
-	assertEquals(26, actual);
+	assertEquals(48 , actual-1);
 		
 		
 	}
+	@Test
+	public void GetTurnoexistente() {
+	
+		assertNotNull(mse.GetTurnoActivo(31));
+		
+	
+		
+		
+	}
+	@Test
+	public void GetTurnoNoexistente() {
+	
+		assertNull(mse.GetTurnoActivo(10000));
+		
+	
+		
+		
+	}
+	@Test
+	public void tipodeautos() {
+	
+		String actual1 = mse.TipoAutoname(1);
+	    String actual2 = mse.TipoAutoname(2);
+	    String actual3 = mse.TipoAutoname(3);
+	    String actual4 = mse.TipoAutoname(4);
+	    
+	    assertEquals("Automovil", actual1);
+	    assertEquals("Moto", actual2);
+	    assertEquals("Campero", actual3);
+	    assertEquals("Bus", actual4);
+	
+	}
+	
+	@Test
+	public void Cancelarturno() {
+			
+
+			
+			boolean actual  = mse.CancelarTurno(38);
+					
+			
+			assertTrue(actual);
+			
+		}
+	@Test
+	public void CancelarturnoNoexistente() {
+	
+						
+			boolean actual  = mse.CancelarTurno(10000);
+					
+			
+			assertFalse(actual);
+			
+		}
+	
+	@Test
+	public void Generarpdf() {
+	
+			try {
+				mse.generarPDFturn(39);				
+			} catch (Exception e) {
+				assertEquals("Número turno no existe", e.getMessage());;				
+			}
+					
+			
+			
+		}
 
 }

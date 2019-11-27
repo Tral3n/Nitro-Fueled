@@ -211,14 +211,19 @@ public class ModeloTurno extends Conexion {
 			return flag;
 		}	
 		
-		public void generarPDFturn (int NROTURN) {
+		public void generarPDFturn (int NROTURN) throws Exception{
 			
 			Document document = new Document();
 			
 			ModeloTurno mt = new ModeloTurno();
-			Turno turno = mt.GetTurnoActivo(NROTURN);
 			
 			try {
+				Turno turno = mt.GetTurnoActivo(NROTURN);
+				
+				if(turno == null) {
+					throw new Exception("Número turno no existe");
+				}
+				
 				PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Tralen\\Documents\\Eclipse Proyects\\Turno"+NROTURN+".pdf"));
 				document.open();
 				document.add(new Paragraph("Nitrofueled"));
@@ -241,6 +246,8 @@ public class ModeloTurno extends Conexion {
 			}
 			catch (FileNotFoundException e) {
 				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 			
@@ -254,9 +261,9 @@ public class ModeloTurno extends Conexion {
 			
 			//System.out.println(mt.UltimoTurno());
 			
-			mt.generarPDFturn(21);
+	
 			
-			System.out.println(mt.UltimoTurno());
+			
 			
 		}
 }

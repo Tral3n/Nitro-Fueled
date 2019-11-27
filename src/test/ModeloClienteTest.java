@@ -37,7 +37,7 @@ ModeloCliente mse ;
 	public void modificarclienteexisnte() {
 	//	fail("Not yet implemented"); 
 		
-   boolean actual = mse.updateCliente(23424, "mateo", "ortiz", 1, "efe432", 21);
+   boolean actual = mse.updateCliente(23424, "mateo", "ortiz", 1, "efe432", 32);
 		
 		assertTrue(actual);
 	}
@@ -59,7 +59,7 @@ ModeloCliente mse ;
 		
 
 		
-		boolean actual  = mse. DeleteClient(25);
+		boolean actual  = mse. DeleteClient(44);
 				
 		
 		assertTrue(actual);
@@ -105,7 +105,7 @@ ModeloCliente mse ;
 		//	fail("Not yet implemented"); 
 			
 
-		boolean actual = mse.VerificarExistCliente("eee222");
+		boolean actual = mse.VerificarExistCliente("wew234");
 		
 		assertTrue(actual);
 			

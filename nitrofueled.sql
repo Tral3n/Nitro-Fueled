@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2019 at 09:12 PM
+-- Generation Time: Nov 28, 2019 at 12:08 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cliente` (
   `ID` int(11) NOT NULL,
-  `CC` int(11) NOT NULL,
+  `CC` int(20) NOT NULL,
   `NOMBRES` varchar(40) NOT NULL,
   `APELLIDOS` varchar(40) NOT NULL,
   `ID_TIPOAUTO` int(11) NOT NULL,
@@ -42,13 +42,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA`) VALUES
-(32, 3423424, 'Edgar', 'Jojo', 2, '342www'),
-(35, 1000000, 'Julian', '', 1, 'tfr345'),
-(36, 339048249, 'Kevin', '', 2, 'pls123'),
-(37, 2142423, 'jesus', '', 3, 'wew234'),
-(38, 4243424, 'Hola', '', 1, 'ded123'),
-(39, 342432, 'prueba', '', 1, 'mdf321'),
-(41, 1423, 'rdsfsd', 'fsadf', 2, 'eee333');
+(56, 231231123, 'Edgar', 'Sarmiento', 1, 'mnu466');
 
 -- --------------------------------------------------------
 
@@ -67,7 +61,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`ID`, `CANTIDAD`, `PORCENTAJE`) VALUES
-(1, 2, 2);
+(1, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -113,7 +107,12 @@ INSERT INTO `detalle_fact` (`ID_FACTURA`, `SERVICIO`, `PRECIO`) VALUES
 (16, 'Lavado', 5324),
 (16, 'Pinchada', 400),
 (17, 'Pinchada', 1000),
-(17, 'Lavado', 4564);
+(17, 'Lavado', 4564),
+(24, 'Polichado', 122),
+(24, 'Lavado', 4564),
+(25, 'Polichado', 122),
+(25, 'Lavado', 4564),
+(26, 'Polichado', 122);
 
 -- --------------------------------------------------------
 
@@ -138,10 +137,9 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`ID_FACTURA`, `CC`, `NOMBRE`, `TIPOAUTO`, `PLACA`, `SUBTOTAL`, `DESCUENTO`, `TOTALFACTURA`, `FECHA`) VALUES
-(14, 339048249, 'Kevin', 'Moto', 'pls123', 10342, 517.1, 9824.9, '2019-11-26 17:39:59'),
-(15, 1000000, 'Julian', 'Automovil', 'tfr345', 4564, 0, 4564, '2019-11-26 17:40:22'),
-(16, 2142423, 'jesus', 'Campero', 'wew234', 10269, 308.07, 9960.93, '2019-11-26 17:48:03'),
-(17, 342432, 'prueba', 'Automovil', 'mdf321', 5564, 0, 5564, '2019-11-27 13:58:42');
+(24, 131231231, 'sdfsdf', 'Automovil', '33dds', 4686, 468.6, 4217.4, '2019-11-27 17:47:36'),
+(25, 231231123, 'Edgar', 'Automovil', 'mnu466', 4686, 234.3, 4451.7, '2019-11-27 17:56:38'),
+(26, 131414124, 'prueba', 'Automovil', 'weq', 122, 0, 122, '2019-11-27 17:57:57');
 
 -- --------------------------------------------------------
 
@@ -181,7 +179,7 @@ CREATE TABLE `precio` (
 --
 
 INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VALUES
-(1, 9789, 1, 1, 1),
+(1, 122, 1, 1, 1),
 (2, 10000, 1, 2, 1),
 (3, 4545, 1, 3, 1),
 (4, 4636, 1, 4, 1),
@@ -189,10 +187,10 @@ INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VA
 (6, 342, 2, 2, 1),
 (7, 5324, 2, 3, 1),
 (8, 800, 2, 4, 1),
-(38, 1000, 12, 1, 1),
-(39, 200, 12, 2, 1),
-(40, 400, 12, 3, 1),
-(41, 1000, 12, 4, 0);
+(54, 4300, 16, 1, 0),
+(55, 200, 16, 2, 1),
+(56, 1000, 16, 3, 1),
+(57, 200, 16, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -212,7 +210,7 @@ CREATE TABLE `servicio` (
 INSERT INTO `servicio` (`ID`, `NOMBRE`) VALUES
 (1, 'Polichado'),
 (2, 'Lavado'),
-(12, 'Pinchada');
+(16, 'Tecnomecanica');
 
 --
 -- Triggers `servicio`
@@ -264,14 +262,10 @@ CREATE TABLE `turno` (
 --
 
 INSERT INTO `turno` (`NROTURN`, `CEDULA`, `NOMBRE`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
-(27, '1000000', 'Julian', 'tfr345', 1, '2019-11-26 17:37:22', 1),
-(28, '339048249', 'Kevin', 'pls123', 2, '2019-11-26 17:38:44', 1),
-(29, '2142423', 'jesus', 'wew234', 3, '2019-11-26 17:47:38', 1),
-(30, '4243424', 'Hola', 'ded123', 1, '2019-11-26 17:50:08', 1),
-(31, '342432', 'prueba', 'mdf321', 1, '2019-11-27 13:58:25', 1),
-(32, '5653453', 'dfgdfgd', 'ded123', 1, '2019-11-27 14:22:24', 0),
-(33, '4535', 'prueba', 'MNU466', 1, '2019-11-27 14:53:44', 0),
-(34, '131231', 'ertet', 'MNU466', 1, '2019-11-27 14:59:46', 1);
+(52, '444', 'eer', 'sfs', 1, '2019-11-19 00:00:00', 0),
+(53, '131231231', 'sdfsdf', '33dds', 1, '2019-11-27 17:46:10', 1),
+(54, '131414124', 'prueba', 'weq', 1, '2019-11-27 17:46:22', 1),
+(55, '231231123', 'Edgar', 'mnu466', 1, '2019-11-27 17:53:54', 1);
 
 --
 -- Indexes for dumped tables
@@ -332,31 +326,31 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `precio`
 --
 ALTER TABLE `precio`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

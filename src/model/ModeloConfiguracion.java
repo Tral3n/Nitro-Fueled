@@ -83,7 +83,7 @@ public class ModeloConfiguracion  extends Conexion {
 		 public static void main(String[] args) {
 			 ModeloConfiguracion mc = new ModeloConfiguracion();
 			 
-			 System.out.println(mc.GetConfig());
+		
 			 
 			 
 		}

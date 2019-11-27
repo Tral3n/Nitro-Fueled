@@ -31,8 +31,13 @@ public class ControladorTurno extends HttpServlet {
 	        
 	        String loQueAmiMeEntra  = mse.InsertTurno(new Turno(0, CEDULA,NOMBRE, PLACA, TipoAuto , null, false)) ;
 	        int lastTurno = mse.UltimoTurno();
-	        mse.generarPDFturn(lastTurno-1);
-	        
+	        try {
+	   				mse.generarPDFturn(lastTurno-1);
+	   			} catch (Exception e) {
+	   				// TODO Auto-generated catch block
+	   				e.printStackTrace();
+	   			}
+	   	        
 			mse.cerrarConexion();
 			
 			response.getWriter().print(loQueAmiMeEntra);
