@@ -29,7 +29,7 @@
 							<h4>Servicios Realizados</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+						
 						</div>
 					</button>
 				<div class="modal fade" id="modal" tabindex="-1"

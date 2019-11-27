@@ -27,7 +27,7 @@
 							<h4>Liquidación</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
@@ -42,7 +42,7 @@
 							<h4>Clientes</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+					
 						</div>
 					</button>
 				</a>
@@ -57,7 +57,7 @@
 							<h4>Servicios</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
@@ -72,7 +72,7 @@
 							<h4>Reportes</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
@@ -91,7 +91,7 @@
 							<h4>Configución</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>

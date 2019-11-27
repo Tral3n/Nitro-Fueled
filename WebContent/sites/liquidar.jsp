@@ -27,7 +27,7 @@
 							<h4>Turnos</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
@@ -42,7 +42,7 @@
 							<h4>Liquidar</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
@@ -58,7 +58,7 @@
 							<h4>Cancelar Turno</h4>
 						</div>
 						<div class=" text-center mt-2">
-							<h1>9332</h1>
+							
 						</div>
 					</button>
 				</a>
