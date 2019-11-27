@@ -1,11 +1,18 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
 import javax.xml.ws.soap.MTOM;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import include.Cliente;
 import include.Configuracion;
@@ -15,10 +22,11 @@ public class ModeloTurno extends Conexion {
 
 	
 	//Insertar Turnos (inserta cliente si no existe)
-	 public boolean InsertTurno( Turno turno ) {
+	 public String InsertTurno( Turno turno ) {
 
-		    boolean flag = false;
-
+		    String resp = "";
+		    boolean turnoC = false;
+		    boolean clienteC  =false;
 		    PreparedStatement objSta = null;
 		
 
@@ -43,18 +51,13 @@ public class ModeloTurno extends Conexion {
 
 		 
 
-     flag = objSta.executeUpdate()==1;
+		        turnoC = objSta.executeUpdate()==1;
 
-ModeloCliente ms = new ModeloCliente ();  
-
-if (ms.VerificarExistCliente(turno.getPLACA())) {
-	return false;
-	
-}else {
-	ms.InsertCliente(turno.getCEDULA(), turno.getNOMBRE(), "", turno.getID_TIPOAUTO(), turno.getPLACA());
-}
-
-;     
+				ModeloCliente ms = new ModeloCliente ();  
+				
+				if (!ms.VerificarExistCliente(turno.getPLACA())) {
+					clienteC=	ms.InsertCliente(turno.getCEDULA(), turno.getNOMBRE(), "", turno.getID_TIPOAUTO(), turno.getPLACA());	
+				}    
      
 		    } catch (Exception e) {
 		        e.printStackTrace();
@@ -68,7 +71,7 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 		        }
 		    }
 
-		    return flag;
+		    return "{\"turno\": "+turnoC+", \"cliente\": "+ clienteC +"  }";
 		    }
 	 
 	//obtener el ultimo turno 
@@ -176,7 +179,7 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 			return  "";
 		}
 			
-			
+			// CANCELAR TURNO
 		public boolean CancelarTurno(int NroTurno) {
 
 			boolean flag = false;
@@ -207,6 +210,39 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 
 			return flag;
 		}	
+		
+		public void generarPDFturn (int NROTURN) {
+			
+			Document document = new Document();
+			
+			ModeloTurno mt = new ModeloTurno();
+			Turno turno = mt.GetTurnoActivo(NROTURN);
+			
+			try {
+				PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Tralen\\Documents\\Eclipse Proyects\\Turno"+NROTURN+".pdf"));
+				document.open();
+				document.add(new Paragraph("Nitrofueled"));
+//				document.add(new Paragraph(turno.toString()));
+				document.add(new Paragraph("NUMERO DE TURNO :"+turno.getNROTURN()));
+				document.add(new Paragraph("Cedula:"+turno.getCEDULA()));
+				document.add(new Paragraph("Nombre:"+turno.getNOMBRE()));
+				document.add(new Paragraph("Placa:"+turno.getPLACA()));
+				document.add(new Paragraph("Id tipo auto:"+turno.getID_TIPOAUTO()));
+				
+			
+				document.add(new Paragraph("Hora de entrada:"+turno.getHORA_EN().getTime().toString()));
+				
+				document.close();
+				writer.close();
+	;			
+			}
+			catch(DocumentException e) {
+				e.printStackTrace();
+			}
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 			
 	 
 	 public static void main(String[] args) {
@@ -217,7 +253,10 @@ if (ms.VerificarExistCliente(turno.getPLACA())) {
 //System.out.println(mt.InsertTurno(turno));
 			
 			//System.out.println(mt.UltimoTurno());
-
+			
+			mt.generarPDFturn(21);
+			
+			System.out.println(mt.UltimoTurno());
 			
 		}
 }

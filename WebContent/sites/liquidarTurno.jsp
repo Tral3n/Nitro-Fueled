@@ -72,7 +72,7 @@ if(request.getParameter("NROTURN")!= null){
             if (turno.isCANCEL()) {
 %>
                 <div class="alert alert-danger" role="alert">
-                    El turno "<%=turno.getNROTURN()%>"  ya fue liquidado!!
+                    El turno "<%=turno.getNROTURN()%>"  ya fue liquidado  o fue cancelado!!
                 </div>
 <%
             }
@@ -298,9 +298,14 @@ if(request.getParameter("NROTURN")!= null){
 													
 													<input   name="Total" type="number" value="0"
 															class="form-control form-control-sm " id="Total"
-															placeholder="">		
-</div>
-
+															placeholder="">	
+															
+</div>	
+													<label for="Precio_nuevo"
+														class="col-sm-2 col-form-label col-form-label-sm">Desea imprimir?</label>
+														<div class="col-sm-10">	
+											<input name="Imprimir" type="checkbox" class="" id="Imprimir">
+</div>	
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

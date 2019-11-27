@@ -67,7 +67,7 @@
 						<td>
 						
 							<!-- boton modal de editar -->
-							<button type="button" class="btn btn-primary">
+							<button id="ID Editar" type="button" class="btn btn-primary">
 								<span data-toggle="modal" data-target="#modal<%=s.getID()%>"
 									class="fa  fa-pencil-alt" aria-hidden="true"></span>
 							</button> <!-- Modal -->
@@ -100,8 +100,8 @@
 														class="col-sm-2 col-form-label col-form-label-sm">Activo</label>															
    <select  name="Activo" class="form-control"  id="exampleFormControlSelect1">
 
-      <option value = "1">Activo</option>
-      <option value = "0">Desactivado</option>
+      <option value = "true">Activo</option>
+      <option value = "false">Desactivado</option>
       
  			
       

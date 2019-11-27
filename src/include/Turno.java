@@ -66,7 +66,7 @@ public class Turno {
 	@Override
 	public String toString() {
 		return "Turno [NROTURN=" + NROTURN + ", CEDULA=" + CEDULA + ", NOMBRE=" + NOMBRE + ", PLACA=" + PLACA
-				+ ", ID_TIPOAUTO=" + ID_TIPOAUTO + ", HORA_EN=" + HORA_EN + ", CANCEL=" + CANCEL + "]";
+				+ ", ID_TIPOAUTO=" + ID_TIPOAUTO + ", HORA_EN=" + HORA_EN.getTime() + ", CANCEL=" + CANCEL + "]";
 	}
     
     

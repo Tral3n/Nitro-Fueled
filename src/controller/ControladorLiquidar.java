@@ -51,6 +51,9 @@ public class ControladorLiquidar extends HttpServlet {
 		ModeloTurno mt = new ModeloTurno();
 		ModeloLiquidar ml = new ModeloLiquidar();
 		
+		boolean imprimir = Boolean.parseBoolean(request.getParameter("Imprimir"));
+		
+		System.out.println(request.getParameter("Imprimir"));
 		int CC =Integer.parseInt(request.getParameter("Cedula"));
 		String NOMBRE =request.getParameter("Nombre");
 		String TIPO_AUTO =request.getParameter("Tipoauto");
@@ -69,10 +72,9 @@ public class ControladorLiquidar extends HttpServlet {
 		for (Detalle_fact detalle_fact : listaDetalle) {
 			SUBTOTAL += detalle_fact.getPRECIO();
 		}
-		System.out.println(configuracion.getCANTIDAD());
-		System.out.println(ListaIds.length);
+	
 		if(ListaIds.length >= configuracion.getCANTIDAD()) {
-			System.out.println(  configuracion.getPORCENTAJE() /100);
+			
 			DESCUENTO =( (float) configuracion.getPORCENTAJE() /100 )*SUBTOTAL;			
 		}
 		
@@ -80,7 +82,7 @@ public class ControladorLiquidar extends HttpServlet {
 		
 		Factura fac = new Factura(0,CC,NOMBRE,TIPO_AUTO,PLACA,SUBTOTAL,DESCUENTO,TOTALFACTURA,null,listaDetalle);
 		
-		boolean flag = ml.InsertarFactura(fac);
+		boolean flag = ml.InsertarFactura(fac,imprimir, NroTurn);
 		mt.CancelarTurno(NroTurn);
 		
 		ml.cerrarConexion();

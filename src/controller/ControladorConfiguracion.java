@@ -23,8 +23,8 @@ public class ControladorConfiguracion extends HttpServlet {
 		
 		ModeloConfiguracion msc = new ModeloConfiguracion();
 		
-		byte Cantidad =Byte.parseByte(request.getParameter("Cantidad"));
-		byte Porcentaje =Byte.parseByte(request.getParameter("Porcentaje"));
+		int Cantidad =Integer.parseInt(request.getParameter("Cantidad"));
+		int Porcentaje =Integer.parseInt(request.getParameter("Porcentaje"));
 		
 		
 		boolean LoQueAmiMeEntra = msc.updateConfig(Cantidad, Porcentaje);

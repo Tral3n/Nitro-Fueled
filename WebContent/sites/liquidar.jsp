@@ -7,6 +7,7 @@
 
  <jsp:include page="../templetes/head.jsp"></jsp:include>
   <jsp:include page="../templetes/topbar.jsp"></jsp:include>
+  <script src="../javascripts/turno.js" type="text/javascript"></script>
 <title>Liquidación</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
 		<div class="row justify-content-center -w100" >
 			<div class="col-md-3">
 				<a class="text-decoration-none" href="turnos.jsp">
-					<button class="btn btn-outline-primary btn-block">
+					<button id ="Turno" class="btn btn-outline-primary btn-block">
 						<div class=" p-3 h1 ">
 							<span class="fa  fa-ticket-alt" aria-hidden="true"></span>
 						</div>
@@ -76,7 +77,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<form class="Editar">
+							<form id="Cancelar">
 								<div class="modal-body">
 									<!-- body del formulario -->
 

@@ -36,6 +36,7 @@ $(document).ready(function() {
 	
 		
 		var datos =	$("#Crear").serialize();
+
 		
 		$.post("../ControladorCliente?"+ datos, function (res,est,jqXHR){
 			

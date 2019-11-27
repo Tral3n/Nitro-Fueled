@@ -144,7 +144,7 @@ for(Servicio s: ListaServ) {
 						</button>
 						</a>
 						
-						<button type="button" class=" btn btn-success" data-toggle="modal" data-target="#modalCrear">
+						<button id="ID Crear" type="button" class=" btn btn-success" data-toggle="modal" data-target="#modalCrear">
 							Crear
 							</button> <!-- Modal -->
 							<div class="modal fade" id="modalCrear" tabindex="-1"
@@ -178,7 +178,7 @@ for(Servicio s: ListaServ) {
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary"
 													data-dismiss="modal">Cancelar</button>
-												<button   type="submit" class="btn btn-primary  Crear_s">Crear</button>
+												<button  id="ID Guardar" type="submit" class="btn btn-primary  Crear_s">Crear</button>
 											</div>
 									</form>
 											

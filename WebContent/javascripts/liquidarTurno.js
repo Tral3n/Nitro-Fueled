@@ -86,19 +86,19 @@ $(document)
 
 							Servs.push(ID);
 						}
-console.log(Servs);
-
-var woof = "";
-
-for (var i = 0; i < Servs.length; i++) {
-woof+= "&"+"Servicio="+ Servs[i];	
-}
-console.log (woof);
-//test=3&test=4
-var Bigdata = datos+Nroturno+woof
-console.log(Nroturno);
-console.log(datos);
-console.log(Bigdata);
+						console.log(Servs);
+						
+						var woof = "";
+						var imprimir = "&"+"Imprimir="+$('#Imprimir').prop("checked");
+						for (var i = 0; i < Servs.length; i++) {
+						woof+= "&"+"Servicio="+ Servs[i];	
+						}
+						console.log (woof);
+						//test=3&test=4
+						var Bigdata = datos+Nroturno+woof+imprimir
+						console.log(Nroturno);
+						console.log(datos);
+						console.log(Bigdata);
 						// $('#TablaGrande
 						// .itemprecio')[0].children[0].innerText
 						

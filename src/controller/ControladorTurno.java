@@ -28,7 +28,11 @@ public class ControladorTurno extends HttpServlet {
 	      String NOMBRE =request.getParameter("Nombre");
 	        String PLACA =request.getParameter("Placa");
 	        int TipoAuto =Integer.parseInt(request.getParameter("Tipo_Auto"));
-	        boolean loQueAmiMeEntra  = mse.InsertTurno(new Turno(0, CEDULA,NOMBRE, PLACA, TipoAuto , null, false)) ;
+	        
+	        String loQueAmiMeEntra  = mse.InsertTurno(new Turno(0, CEDULA,NOMBRE, PLACA, TipoAuto , null, false)) ;
+	        int lastTurno = mse.UltimoTurno();
+	        mse.generarPDFturn(lastTurno-1);
+	        
 			mse.cerrarConexion();
 			
 			response.getWriter().print(loQueAmiMeEntra);
@@ -37,8 +41,23 @@ public class ControladorTurno extends HttpServlet {
 	}
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		   
 		doGet(request, response);
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloTurno mse = new ModeloTurno();
+		
+		int NROTURN = Integer.parseInt(request.getParameter("NROTURN"));
+		
+		System.out.println(request.getParameter("NROTURN"));
+		System.out.println(request.getQueryString());
+		boolean flag= mse.CancelarTurno(NROTURN);
+		
+		response.getWriter().print(flag);
+		
+
 	}
 
 }

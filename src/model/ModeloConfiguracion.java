@@ -42,7 +42,7 @@ public class ModeloConfiguracion  extends Conexion {
 		
 		//modificar los parametros
 		
-		 public boolean updateConfig ( byte CANTIDAD, byte PORCENTAJE ) {
+		 public boolean updateConfig ( int CANTIDAD, int PORCENTAJE ) {
 
 			    boolean flag = false;
 
@@ -54,8 +54,8 @@ public class ModeloConfiguracion  extends Conexion {
 			        String sql = "UPDATE configuracion SET CANTIDAD= ?, PORCENTAJE = ? WHERE ID  = 1  ";
 			        objSta = getConnection().prepareStatement(sql);
 			       
-			        objSta.setByte(1, CANTIDAD);
-			        objSta.setByte(2, PORCENTAJE);
+			        objSta.setInt(1, CANTIDAD);
+			        objSta.setInt(2, PORCENTAJE);
 			       
 			
 
@@ -83,7 +83,7 @@ public class ModeloConfiguracion  extends Conexion {
 		 public static void main(String[] args) {
 			 ModeloConfiguracion mc = new ModeloConfiguracion();
 			 
-			 mc.updateConfig((byte)8, (byte)9);
+			 System.out.println(mc.GetConfig());
 			 
 			 
 		}

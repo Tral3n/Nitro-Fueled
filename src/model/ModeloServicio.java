@@ -205,9 +205,11 @@ public class ModeloServicio extends Conexion {
 		    }
 
 	public static void main(String[] args) {
-		ModeloServicio ms = new ModeloServicio();
-		
-	
+//		ModeloServicio ms = new ModeloServicio();
+//		
+//	ms.updatePrecioDetalleServ(25, 1000, true);
 
+		
+		
 	}
 }

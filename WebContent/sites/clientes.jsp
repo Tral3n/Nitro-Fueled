@@ -115,7 +115,7 @@ ModeloCliente c = new ModeloCliente();
 						</div>
 						
 							<!-- boton modal de editar -->
-							<button type="button" class=" fa  fa-pencil-alt btn btn-primary" data-toggle="modal" data-target="#editar<%=s.getID()%>">
+							<button id="Modificar" type="button" class=" fa  fa-pencil-alt btn btn-primary" data-toggle="modal" data-target="#editar<%=s.getID()%>">
 							
 							</button> <!-- Modal -->
 							<div class="modal fade" id="editar<%=s.getID()%>" tabindex="-1"
@@ -160,7 +160,7 @@ ModeloCliente c = new ModeloCliente();
 														
 															
 													<label for="formGroupExampleInput2">Tipo de auto</label>
-   <select  name="Tipo_auto_nuevo" class="form-control"  id="exampleFormControlSelect1">
+   <select  name="Tipo_auto_nuevo" class="form-control"  id="Ta_nuevo">
 
       <option value = "1">Automovil</option>
       <option value = "2">Moto</option>
@@ -231,7 +231,7 @@ ModeloCliente c = new ModeloCliente();
 						</button>
 						</a>
 									<!-- boton modal de crear -->
- <button id="Crear" type="button" class=" btn btn-success" data-toggle="modal" data-target="#aqui">
+ <button id="Crear_Modal" type="button" class=" btn btn-success" data-toggle="modal" data-target="#aqui">
 							Crear
 							</button> <!-- Modal -->
 							<div class="modal fade" id="aqui" tabindex="-1"
@@ -276,7 +276,7 @@ ModeloCliente c = new ModeloCliente();
 														
 															
 													<label for="formGroupExampleInput2">Tipo de auto</label>
-   <select  name="Tipo_auto" class="form-control"  id="exampleFormControlSelect1">
+   <select  name="Tipo_auto" class="form-control"  id="Tipo_Auto">
 
       <option value = "1">Automovil</option>
       <option value = "2">Moto</option>

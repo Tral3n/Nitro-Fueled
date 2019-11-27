@@ -32,13 +32,13 @@ public class ControladorCliente extends HttpServlet {
 		int CCN =Integer.parseInt(request.getParameter("Cedula_nueva"));
 		String NombresN =request.getParameter("Nombres_nuevo");
 		String ApellidosN =request.getParameter("Apellidos_nuevo");
-	int Tipo_autoN =Integer.parseInt(request.getParameter("Tipo_auto_nuevo"));
+		int Tipo_autoN =Integer.parseInt(request.getParameter("Tipo_auto_nuevo"));
 		String PlacaN =request.getParameter("Placa_nueva");
 		int ID =Integer.parseInt(request.getParameter("ID"));
 		
 		
 		
-boolean loQueAmiMeEntra  = mse.updateCliente(  CCN, NombresN, ApellidosN, Tipo_autoN, PlacaN,ID )	;
+		boolean loQueAmiMeEntra  = mse.updateCliente(  CCN, NombresN, ApellidosN, Tipo_autoN, PlacaN,ID )	;
 		mse.cerrarConexion();
 		
 		response.getWriter().print(loQueAmiMeEntra);

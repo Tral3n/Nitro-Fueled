@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2019 at 04:49 AM
+-- Generation Time: Nov 27, 2019 at 09:12 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,19 +42,13 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`ID`, `CC`, `NOMBRES`, `APELLIDOS`, `ID_TIPOAUTO`, `PLACA`) VALUES
-(1, 1036687148, 'Dio', 'dfsf', 3, 'udf 213'),
-(2, 1234141232, 'Jotaro', 'gutierrez3', 1, '25252'),
-(3, 1, 'jojo', 'bizarre', 3, 'joj413'),
-(4, 5675, 'A name', 'A Lastname', 1, 'odr231'),
-(5, 4, '4324', 'dgdgd', 3, 'fdsff3'),
-(6, 5675, '', '', 3, 'te45g'),
-(7, 35345353, '', '', 3, 'pls123'),
-(8, 34342, '', '', 3, 'sdfs'),
-(10, 1036687149, 'eDgar', 'Sarmiento', 2, 'MNU466'),
-(11, 124124142, 'jOSE ', '', 2, '143fff'),
-(12, 423424, 'Prueba', '', 2, '123ogg'),
-(13, 4535, 'fsdfs', '', 1, 'eee222'),
-(14, 21424, 'prueba', '', 2, '123oaa');
+(32, 3423424, 'Edgar', 'Jojo', 2, '342www'),
+(35, 1000000, 'Julian', '', 1, 'tfr345'),
+(36, 339048249, 'Kevin', '', 2, 'pls123'),
+(37, 2142423, 'jesus', '', 3, 'wew234'),
+(38, 4243424, 'Hola', '', 1, 'ded123'),
+(39, 342432, 'prueba', '', 1, 'mdf321'),
+(41, 1423, 'rdsfsd', 'fsadf', 2, 'eee333');
 
 -- --------------------------------------------------------
 
@@ -73,7 +67,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`ID`, `CANTIDAD`, `PORCENTAJE`) VALUES
-(1, 2, 4);
+(1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -100,7 +94,26 @@ INSERT INTO `detalle_fact` (`ID_FACTURA`, `SERVICIO`, `PRECIO`) VALUES
 (6, 'Prueba', 1000),
 (6, 'Lavado', 4564),
 (7, 'Polichado', 23418),
-(7, 'Lavado', 342);
+(7, 'Lavado', 342),
+(8, 'Polichado', 9789),
+(9, 'Polichado', 23418),
+(9, 'Lavado', 342),
+(10, 'Polichado', 9789),
+(10, 'Lavado', 4564),
+(11, 'Lavado', 4564),
+(11, 'Prueba', 1000),
+(12, 'Polichado', 9789),
+(12, 'Lavado', 4564),
+(13, 'Polichado', 4545),
+(13, 'Lavado', 5324),
+(14, 'Polichado', 10000),
+(14, 'Lavado', 342),
+(15, 'Lavado', 4564),
+(16, 'Polichado', 4545),
+(16, 'Lavado', 5324),
+(16, 'Pinchada', 400),
+(17, 'Pinchada', 1000),
+(17, 'Lavado', 4564);
 
 -- --------------------------------------------------------
 
@@ -125,11 +138,10 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`ID_FACTURA`, `CC`, `NOMBRE`, `TIPOAUTO`, `PLACA`, `SUBTOTAL`, `DESCUENTO`, `TOTALFACTURA`, `FECHA`) VALUES
-(3, 124124142, '  jOSE   ', 'Moto', '143fff', 23760, 950.4, 22809.6, '2019-11-25 20:27:22'),
-(4, 423424, '  Prueba  ', 'Moto', '123ogg', 1342, 53.68, 1288.32, '2019-11-25 20:30:05'),
-(5, 423424, 'Prueba', 'Moto', '123ogg', 342, 0, 342, '2019-11-25 21:02:46'),
-(6, 4535, 'fsdfs', 'Automovil', 'eee222', 5564, 222.56, 5341.44, '2019-11-25 21:13:44'),
-(7, 21424, 'prueba', 'Moto', '123oaa', 23760, 950.4, 22809.6, '2019-11-25 22:45:15');
+(14, 339048249, 'Kevin', 'Moto', 'pls123', 10342, 517.1, 9824.9, '2019-11-26 17:39:59'),
+(15, 1000000, 'Julian', 'Automovil', 'tfr345', 4564, 0, 4564, '2019-11-26 17:40:22'),
+(16, 2142423, 'jesus', 'Campero', 'wew234', 10269, 308.07, 9960.93, '2019-11-26 17:48:03'),
+(17, 342432, 'prueba', 'Automovil', 'mdf321', 5564, 0, 5564, '2019-11-27 13:58:42');
 
 -- --------------------------------------------------------
 
@@ -170,17 +182,17 @@ CREATE TABLE `precio` (
 
 INSERT INTO `precio` (`ID`, `PRECIO`, `ID_SERVICIO`, `ID_TIPOAUTO`, `ACTIVO`) VALUES
 (1, 9789, 1, 1, 1),
-(2, 23418, 1, 2, 1),
+(2, 10000, 1, 2, 1),
 (3, 4545, 1, 3, 1),
 (4, 4636, 1, 4, 1),
 (5, 4564, 2, 1, 1),
 (6, 342, 2, 2, 1),
 (7, 5324, 2, 3, 1),
 (8, 800, 2, 4, 1),
-(18, 1000, 7, 1, 1),
-(19, 1000, 7, 2, 1),
-(20, 1000, 7, 3, 1),
-(21, 1000, 7, 4, 1);
+(38, 1000, 12, 1, 1),
+(39, 200, 12, 2, 1),
+(40, 400, 12, 3, 1),
+(41, 1000, 12, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -200,7 +212,7 @@ CREATE TABLE `servicio` (
 INSERT INTO `servicio` (`ID`, `NOMBRE`) VALUES
 (1, 'Polichado'),
 (2, 'Lavado'),
-(7, 'Prueba');
+(12, 'Pinchada');
 
 --
 -- Triggers `servicio`
@@ -252,18 +264,14 @@ CREATE TABLE `turno` (
 --
 
 INSERT INTO `turno` (`NROTURN`, `CEDULA`, `NOMBRE`, `PLACA`, `ID_TIPOAUTO`, `HORA_EN`, `CANCEL`) VALUES
-(1, '41412', '', 'edf424', 3, '2019-11-01 16:39:07', 1),
-(2, '5675', '', 'odr231', 3, '2019-11-01 17:14:55', 1),
-(3, '5675', '', 'odr231', 3, '2019-11-15 15:39:29', 1),
-(4, '5675', '', 'te45g', 3, '2019-11-15 15:41:27', 1),
-(5, '452452', '', 'te45g', 3, '2019-11-15 15:43:13', 1),
-(6, '35345353', '', 'pls123', 3, '2019-11-15 16:02:42', 1),
-(7, '34342', '', 'sdfs', 3, '2019-11-18 16:24:05', 1),
-(8, '34234324', '', '2423', 4, '2019-11-18 16:28:37', 1),
-(9, '124124142', 'jOSE ', '143fff', 2, '2019-11-25 19:47:34', 1),
-(10, '423424', 'Prueba', '123ogg', 2, '2019-11-25 20:29:45', 1),
-(11, '4535', 'fsdfs', 'eee222', 1, '2019-11-25 21:13:28', 1),
-(12, '21424', 'prueba', '123oaa', 2, '2019-11-25 22:44:46', 1);
+(27, '1000000', 'Julian', 'tfr345', 1, '2019-11-26 17:37:22', 1),
+(28, '339048249', 'Kevin', 'pls123', 2, '2019-11-26 17:38:44', 1),
+(29, '2142423', 'jesus', 'wew234', 3, '2019-11-26 17:47:38', 1),
+(30, '4243424', 'Hola', 'ded123', 1, '2019-11-26 17:50:08', 1),
+(31, '342432', 'prueba', 'mdf321', 1, '2019-11-27 13:58:25', 1),
+(32, '5653453', 'dfgdfgd', 'ded123', 1, '2019-11-27 14:22:24', 0),
+(33, '4535', 'prueba', 'MNU466', 1, '2019-11-27 14:53:44', 0),
+(34, '131231', 'ertet', 'MNU466', 1, '2019-11-27 14:59:46', 1);
 
 --
 -- Indexes for dumped tables
@@ -324,31 +332,31 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_FACTURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `precio`
 --
 ALTER TABLE `precio`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `NROTURN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

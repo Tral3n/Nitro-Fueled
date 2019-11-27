@@ -25,7 +25,7 @@ public class ControladorServicio extends HttpServlet {
 		boolean Activo = Boolean.parseBoolean((request.getParameter("Activo"))) ;
 		int ID =Integer.parseInt(request.getParameter("ID_Precio"));
 	
-		
+		System.out.println(Activo);
 
 		
 		boolean loQueAmiMeEntra  = mse.updatePrecioDetalleServ(ID , Precio_nuevo , Activo);

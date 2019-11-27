@@ -9,18 +9,22 @@ $(document).ready(function() {
 	
 		
 		var datos =	$("#Turno").serialize();
-		
 		$.post("../ControladorTurno?"+ datos, function (res,est,jqXHR){
 			
 			console.log (res);
-			if (res == "true") {
+			var json = JSON.parse(res);
+			if (json.turno && json.cliente) {
 
-				alert("Se cambio la 'Vuelta' exitosamente");
+				alert("Se creo turno y cliente");
 				document.location.reload(true);
-			} else {
+			} else if (json.turno && !json.cliente){
 
-				alert("no se hizo nada");
+				alert("Se creo el turno , la placa ya existe");
+				document.location.reload(true);
 
+			}else if((!json.turno && !json.cliente)){
+				
+				alert("No se hizo nada");
 			}
 			
 			
@@ -36,7 +40,32 @@ $(document).ready(function() {
 	
 	
 	
+	// Funcion para cancelar turno
+
+	$("#Buscar_T").click(function(e) {
+		
+		
+		e.preventDefault();
+
+		var datos = $(this).closest("#Cancelar").serialize();
+
 	
+
+		$.ajax({ url: '../ControladorTurno?'+ datos ,type : 'put', success: function (res)  {
+
+			if (res == "true") {
+
+				alert("Se cambio la 'Vuelta' exitosamente");
+				document.location.reload(true);
+			} else {
+
+				alert("no se hizo nada");
+
+			}
+		}
+		});
+
+	});
 	
 	
 	

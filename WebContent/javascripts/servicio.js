@@ -8,6 +8,8 @@ $(document).ready(function() {
 	
 		var datos = $(this).closest("form").serialize();
 
+//		alert(datos);
+		
 		$.ajax({ url: '../ControladorServicio?'+ datos ,type : 'put', success: function (res){
 
 			if (res == "true") {
@@ -22,10 +24,6 @@ $(document).ready(function() {
 		}
 		});
 
-		$.put("../ControladorServicio", datos, function(res, est, jqXHR) {
-
-
-		});
 
 	});
 

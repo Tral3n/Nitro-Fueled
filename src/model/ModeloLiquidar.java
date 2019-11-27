@@ -10,6 +10,8 @@ import java.util.Calendar;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import include.Cliente;
@@ -18,6 +20,7 @@ import include.Detalle_fact;
 import include.Factura;
 import include.Liquidar;
 import include.Servicio;
+import javafx.scene.control.Cell;
 
 
 public class ModeloLiquidar  extends Conexion{
@@ -102,7 +105,7 @@ public class ModeloLiquidar  extends Conexion{
 
 				//Insertar factura
 			
-			public boolean InsertarFactura (Factura f) {
+			public boolean InsertarFactura (Factura f, boolean imprimir, int NroTurn) {
 				
 				boolean flag = false;
 
@@ -134,9 +137,12 @@ public class ModeloLiquidar  extends Conexion{
 						
 					}
 			        
-			        
-			        generarPDF(lastId);
+			        if (imprimir) {
 
+				        generarPDFfac(lastId);
+
+					}
+			        
 
 			    } catch (Exception e) {
 			        e.printStackTrace();
@@ -248,15 +254,54 @@ public Factura getFactura (int id_factura) {
 		return lastId;
 	}
 	
-public void generarPDF (int id_factura) {
+public void generarPDFfac (int id_factura) {
 		
 		Document document = new Document();
+		
+		ModeloTurno mt = new ModeloTurno();
+		
+		
+		Factura factura = getFactura(id_factura);
 		
 		try {
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Tralen\\Documents\\Eclipse Proyects\\Factura"+id_factura+".pdf"));
 			document.open();
 			document.add(new Paragraph("Nitrofueled"));
-			document.add(new Paragraph(getFactura(id_factura).toString()));
+			document.add(new Paragraph("Factura #:"+factura.getID_FACTURA()));
+			document.add(new Paragraph("Cedula :"+factura.getCC()));
+			document.add(new Paragraph("Nombre :"+factura.getNOMBRE()));
+			document.add(new Paragraph("Tipo auto :"+factura.getTIPO_AUTO()));
+			document.add(new Paragraph("Placa :"+factura.getPLACA()));
+			document.add(new Paragraph("Fecha :"+factura.getFECHA().getTime()));
+			
+			PdfPTable table = new PdfPTable(2);
+			table.setWidthPercentage(105);
+			table.setSpacingBefore(11f);
+			table.setSpacingAfter(11f);
+			
+			float[] colWidth= {2f,2f};
+			table.setWidths(colWidth);
+			PdfPCell servicio = new PdfPCell (new Paragraph("Servicio :"));
+			PdfPCell precio = new PdfPCell (new Paragraph("Precio :"));
+			
+			table.addCell(servicio);
+			table.addCell(precio);
+            
+            
+     
+        
+            for (int row = 0; row < factura.getDetalleFact().size(); row++) {
+               
+                	
+                	table.addCell(factura.getDetalleFact().get(row).getSERVICIO());
+                	table.addCell(Float.toString(factura.getDetalleFact().get(row).getPRECIO()));
+                
+            }
+            document.add(table);
+            document.add(new Paragraph("Subtotal:"+factura.getSUBTOTAL()));
+            document.add(new Paragraph("Descuento :"+factura.getDESCUENTO()));
+            document.add(new Paragraph("TOTAL A FACTURAR :"+factura.getTOTAL_FACTURA()));
+           
 			document.close();
 			writer.close();
 ;			
@@ -271,8 +316,12 @@ public void generarPDF (int id_factura) {
 	
 	
 	 public static void main(String[] args) {
-			ModeloLiquidar ml = new ModeloLiquidar();
-			ml.generarPDF(3);
+			
+		 ModeloLiquidar ml = new ModeloLiquidar();
+		 Factura factura = ml.getFactura(17);
+		 System.out.println(factura);
+		 System.out.println(factura.getDetalleFact().size());
+		 ml.generarPDFfac(17);
 			
 	 }
 }

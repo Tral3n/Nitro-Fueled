@@ -37,12 +37,9 @@ ModeloCliente mse ;
 	public void modificarclienteexisnte() {
 	//	fail("Not yet implemented"); 
 		
-
-		
-		boolean actual  = mse.updateCliente(4, "4324", "dgdgd", 3, "fdsff3", 5);
+   boolean actual = mse.updateCliente(23424, "mateo", "ortiz", 1, "efe432", 21);
 		
 		assertTrue(actual);
-		
 	}
 	
 	@Test
@@ -56,5 +53,62 @@ ModeloCliente mse ;
 		assertFalse(actual);
 		
 	}
+	@Test
+	public void EliminarClienteExiste() {
+	//	fail("Not yet implemented"); 
+		
+
+		
+		boolean actual  = mse. DeleteClient(25);
+				
+		
+		assertTrue(actual);
+		
+	}
+	
+	@Test
+	public void EliminarClienteNoexiste() {
+		//	fail("Not yet implemented"); 
+			
+
+			
+			boolean actual  = mse. DeleteClient(100);
+					
+			
+			assertFalse(actual);
+			
+		}
+	@Test
+	public void InsertarCliente() {
+		//	fail("Not yet implemented"); 
+			
+
+			
+			boolean actual  = mse.InsertCliente(453534, "julian", "largo",3, "fgh123");
+					
+			
+			assertTrue(actual);
+			
+		}
+	@Test
+	public void tablaclientes() {
+		//	fail("Not yet implemented"); 
+			
+
+				
+			assertNotNull(mse.GetListaClient()	);
+			
+		}
+	
+	@Test
+	public void VerificarExistCliente() {
+		//	fail("Not yet implemented"); 
+			
+
+		boolean actual = mse.VerificarExistCliente("eee222");
+		
+		assertTrue(actual);
+			
+		}
 
 }
